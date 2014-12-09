@@ -47,10 +47,12 @@ namespace Projet2 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  accepterToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  refuserToolStripMenuItem;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::ComponentModel::IContainer^  components;
 	protected:
 
@@ -70,6 +72,7 @@ namespace Projet2 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->accepterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->refuserToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -85,7 +88,10 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Column1 });
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+				this->Column1,
+					this->Column2
+			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
 			this->dataGridView1->Name = L"dataGridView1";
@@ -101,6 +107,12 @@ namespace Projet2 {
 			this->Column1->HeaderText = L"Cours en attente";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Enseignant responsable";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
 			// 
 			// contextMenuStrip1
 			// 
@@ -144,7 +156,7 @@ namespace Projet2 {
 #pragma endregion
 	
 	private: System::Void admin_Load(System::Object^  sender, System::EventArgs^  e) {
-				 ifstream fichier("Cours_en_attente.txt");
+				 /*ifstream fichier("Cours_en_attente.txt");
 				 string monTableau;
 				 if (!fichier.is_open())
 				 {
@@ -157,48 +169,98 @@ namespace Projet2 {
 						 strcpy(str1, monTableau.c_str());
 						 char str2[] = ";";
 						 char * listecours;
-
+						 char * enseignant;
 
 						 listecours = strtok(str1, str2);
+						 enseignant = strtok(NULL, str2);
 						 String^ c = gcnew String(listecours);
-
-						 dataGridView1->Rows->Add(c);
+						 String^ c2 = gcnew String(enseignant);
+						 MessageBox::Show(c);
+						 MessageBox::Show(c2);
+						 ArrayList^ myAL = gcnew ArrayList;
+						 myAL->Add(c);
+						 myAL->Add(c2);
+						 dataGridView1->Rows->Add(c,c2);
 					 }
 				 }
+				 */
+				 ifstream fichier("Cours_en_attente.txt");
+				 string monTableau;
+				 if (!fichier.is_open())
+				 {
+				 }
+				 else{
+					 array<String^>^ tab = gcnew array<String^>(100);
+					 bool res = false;
+					 int i = 0;
+					 while (getline(fichier, monTableau))
+					 {
+						 char *str1 = new char[monTableau.length() + 1];
+						 strcpy(str1, monTableau.c_str());
+						 char str2[] = ";";
+						 char * logfile;
+						 char * passfile;
 
+						 logfile = strtok(str1, str2);
+						 passfile = strtok(NULL, str2);
+						 String^ c = gcnew String(logfile);
+						 String^ c2 = gcnew String(passfile);
+						 ///MessageBox::Show("c : )  " + c);
+						 ///MessageBox::Show("c2 : )  " + c2);
+						 if (c != ""){
+							 tab[i] = c;
+						 }
+						 if (c2 != ""){
+
+							 tab[i + 1] = c2;
+							 
+						 }
+						 
+
+						 i= i++;
+					 }
+					 for (int j = 0; j < tab->Length; j=j+2){
+						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+							 dataGridView1->Rows->Add(tab[j], tab[j + 1]);
+						 }
+						 }
+					 }
+					
+				 
 
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 				 contextMenuStrip1->Show();
 				 
 	}
-private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			
-			 String^ c = dataGridView1->SelectedCells[0]->Value->ToString();
-			 /// Ecriture du cours accepter dans la liste des cours disponible			 
+	private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 
-				 
-				 String^ fileName = "liste_cours.txt";
+					 String^ c = dataGridView1->SelectedCells[0]->Value->ToString();
+					 /// Ecriture du cours accepter dans la liste des cours disponible			 
 
-				 StreamWriter^ sw = gcnew StreamWriter(fileName,true);
-				 sw->WriteLine(c+"\n");
-				 sw->Close();
 
-				 int index = dataGridView1->SelectedCells[0]->RowIndex;
-				 dataGridView1->Rows->RemoveAt(index);
+					 String^ fileName = "liste_cours.txt";
 
-				 String^ f = "Cours_en_attente.txt";
+					 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
+					 sw->WriteLine(c + "\n");
+					 sw->Close();
 
-				 StreamWriter^ s = gcnew StreamWriter(f);
-				 for (int i = 0; i < dataGridView1->Rows->Count; i++)
-				 {
-					 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString()+"\n");
+					 int index = dataGridView1->SelectedCells[0]->RowIndex;
+					 dataGridView1->Rows->RemoveAt(index);
+
+					 String^ f = "Cours_en_attente.txt";
+
+					 StreamWriter^ s = gcnew StreamWriter(f);
+					 for (int i = 0; i < dataGridView1->Rows->Count; i++)
+					 {
+						 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + "\n");
+					 }
+
+					 s->Close();
+
+
 				 }
-				 
-				 s->Close();
-					 
-				 
-}
+	
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 
 }

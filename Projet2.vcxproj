@@ -111,6 +111,9 @@
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="enseignant.resx">
+      <DependentUpon>enseignant.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm1.resx">
       <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
