@@ -1,0 +1,8 @@
+Mathieu;test;ETU
+test;test;ETU
+admin;admin;ADM
+
+sara;salut;ETU
+swag;swag;ETU
+tintin;lesac;ETU
+nouveau;test;ETU
