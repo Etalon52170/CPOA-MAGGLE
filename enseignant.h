@@ -3,7 +3,7 @@
 #include <windows.h>
 #include "Myform.h"
 #include "ProposeCours.h"
-
+#include "CoursEns.h"
 namespace Projet2 {
 
 	
@@ -114,6 +114,8 @@ namespace Projet2 {
 				 
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 CoursEns^ en = gcnew CoursEns();
+				 en->Show();
 	}
 	};
 }

@@ -1,6 +1,20 @@
 #pragma once
+#include <windows.h>
+#include "MyForm.h"
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <stdio.h>
+#include <string>
+#include <sstream>
 
+
+#include <atlstr.h>
+#define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
+
+	using namespace System::IO;
+	using namespace System;
 
 	using namespace System;
 	using namespace System::ComponentModel;
@@ -126,8 +140,95 @@ namespace Projet2 {
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 	}
 	private: System::Void CoursEns_Load(System::Object^  sender, System::EventArgs^  e) {
-		
-	
+				 boolean pareil;
+				 
+				 String^ name;
+				 ifstream fichier1("etu_co.txt");
+				 string montableau1;
+				 if (!fichier1.is_open())
+				 {
+				 }
+				 else{
+					 array<String^>^ tab = gcnew array<String^>(100);
+					 bool res = false;
+					 int i = 0;
+					 while (getline(fichier1, montableau1))
+					 {
+						 char *str1 = new char[montableau1.length() + 1];
+						 strcpy(str1, montableau1.c_str());
+						 char str2[] = ";";
+						 char * nom;
+						 nom = strtok(str1, str2);
+						  name = gcnew String(nom);
+						  fichier1.close();
+					 }
+				 }
+				 ifstream fichier("liste_cours_ens.txt");
+				 string monTableau;
+				 if (!fichier.is_open())
+				 {
+				 }
+				 else{
+					 array<String^>^ tab = gcnew array<String^>(100);
+					 bool res = false;
+					 int i = 0;
+					 while (getline(fichier, monTableau))
+					 {
+						 char *str1 = new char[monTableau.length() + 1];
+						 strcpy(str1, monTableau.c_str());
+						 char str2[] = ";";
+						 char * logfile;
+						 char * passfile;
+						 char * desc;
+						 char * n;
+						 n = strtok(str1, str2);
+						 logfile = strtok(NULL, str2);
+						 passfile = strtok(NULL, str2);
+						 desc = strtok(NULL, str2);
+						 String^ cc = gcnew String(n);
+						 String^ c = gcnew String(logfile);
+						 String^ c2 = gcnew String(passfile);
+						 String^ c3 = gcnew String(desc);
+						 MessageBox::Show(cc);
+						 ///MessageBox::Show(c2);
+						 ///MessageBox::Show(c3);
+						 
+						 if (cc == name){
+							 ///MessageBox::Show(cc + " " + name);
+							 if (c != nullptr){
+								 ///if (i == 2){
+								 ///tab[i - 1] = c;
+								 ///}
+								 ///else{
+								 tab[i] = c;
+								 ///}
+							 }
+							 if (c2 != nullptr){
+
+
+								 tab[i + 1] = c2;
+
+
+							 }
+							 if (c3 != nullptr){
+								 tab[i + 2] = c3;
+							 }
+						 }
+						 i = i + 4;
+					 }
+					 
+					 for (int j = 0; j < 99; j = j + 4){
+						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+							 
+								 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2]);
+							 
+						 }
+						 
+					 }
+					 fichier.close();
+				 }
+
+
 	}
 };
 }
