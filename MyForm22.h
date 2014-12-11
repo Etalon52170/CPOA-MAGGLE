@@ -48,9 +48,14 @@ namespace Projet2 {
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
 	protected:
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Cours;
+
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  sinscrireToolStripMenuItem;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Cours;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Enseignant;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+
+
 	private: System::ComponentModel::IContainer^  components;
 
 
@@ -70,9 +75,11 @@ namespace Projet2 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Cours = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->sinscrireToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->Cours = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Enseignant = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -93,22 +100,21 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Cours });
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->Cours,
+					this->Enseignant, this->Column1
+			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 24);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(485, 391);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm21::dataGridView1_CellContentClick);
 			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &MyForm21::dataGridView1_CellMouseClick);
-			// 
-			// Cours
-			// 
-			this->Cours->HeaderText = L"Cours";
-			this->Cours->Name = L"Cours";
-			this->Cours->ReadOnly = true;
 			// 
 			// contextMenuStrip1
 			// 
@@ -121,7 +127,24 @@ namespace Projet2 {
 			this->sinscrireToolStripMenuItem->Name = L"sinscrireToolStripMenuItem";
 			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(134, 24);
 			this->sinscrireToolStripMenuItem->Text = L"s\'inscrire";
-			
+			// 
+			// Cours
+			// 
+			this->Cours->HeaderText = L"Cours";
+			this->Cours->Name = L"Cours";
+			this->Cours->ReadOnly = true;
+			// 
+			// Enseignant
+			// 
+			this->Enseignant->HeaderText = L"Enseignant Responsable";
+			this->Enseignant->Name = L"Enseignant";
+			this->Enseignant->ReadOnly = true;
+			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Description";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
 			// 
 			// MyForm21
 			// 
@@ -147,28 +170,64 @@ namespace Projet2 {
 	
 	}
 	private: System::Void MyForm21_Load(System::Object^  sender, System::EventArgs^  e) {
+
 				 ifstream fichier("liste_cours.txt");
 				 string monTableau;
 				 if (!fichier.is_open())
 				 {
 				 }
 				 else{
+					 array<String^>^ tab = gcnew array<String^>(100);
 					 bool res = false;
+					 int i = 0;
 					 while (getline(fichier, monTableau))
 					 {
 						 char *str1 = new char[monTableau.length() + 1];
 						 strcpy(str1, monTableau.c_str());
 						 char str2[] = ";";
-						 char * listecours;
+						 char * cours;
+						 char * ens;
+						 char * desc;
+						 cours = strtok(str1, str2);
+						 ens = strtok(NULL, str2);
+						 desc = strtok(NULL, str2);
+						 String^ c = gcnew String(cours);
+						 String^ c2 = gcnew String(ens);
+						 String^ c3 = gcnew String(desc);
 
-
-						 listecours = strtok(str1, str2);
-						 String^ c = gcnew String(listecours);
 						 if (c != ""){
-							 dataGridView1->Rows->Add(c);
+							 ///if (i == 2){
+							 ///tab[i - 1] = c;
+							 ///}
+							 ///else{
+							 tab[i] = c;
+							 ///}
+						 }
+						 if (c2 != nullptr){
+
+
+							 tab[i + 1] = c2;
+
+
+						 }
+
+						 if (c3 != nullptr){
+							 tab[i + 2] = c3;
+						 }
+
+						 i = i + 3;
+					 }
+
+					 for (int j = 0; j < 99; j = j + 3){
+						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+
+							 dataGridView1->Rows->Add(tab[j], tab[j + 1],tab[j+2]);
+
 						 }
 					 }
+
 				 }
+
 
 	}
 	

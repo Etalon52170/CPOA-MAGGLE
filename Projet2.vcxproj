@@ -52,6 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <UndefinePreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(UndefinePreprocessorDefinitions)</UndefinePreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -78,17 +79,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="acceuilAdmin.cpp" />
     <ClCompile Include="admin.cpp" />
+    <ClCompile Include="CoursEns.cpp" />
+    <ClCompile Include="CoursEtu.cpp" />
     <ClCompile Include="enseignant.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="MyForm2.cpp" />
     <ClCompile Include="MyForm21.cpp" />
     <ClCompile Include="MyForm22.cpp" />
+    <ClCompile Include="NewEnseignant.cpp" />
+    <ClCompile Include="ProposeCours.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h" />
+    <ClInclude Include="acceuilAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="admin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CoursEns.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CoursEtu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="enseignant.h">
@@ -106,10 +121,25 @@
     <ClInclude Include="MyForm22.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="NewEnseignant.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ProposeCours.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="acceuilAdmin.resx">
+      <DependentUpon>acceuilAdmin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEns.resx">
+      <DependentUpon>CoursEns.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEtu.resx">
+      <DependentUpon>CoursEtu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="enseignant.resx">
       <DependentUpon>enseignant.h</DependentUpon>
@@ -125,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm22.resx">
       <DependentUpon>MyForm22.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEnseignant.resx">
+      <DependentUpon>NewEnseignant.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProposeCours.resx">
+      <DependentUpon>ProposeCours.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

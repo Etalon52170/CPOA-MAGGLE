@@ -1,12 +1,9 @@
 #pragma once
-
 #include <windows.h>
-#include "Myform.h"
-#include "ProposeCours.h"
-
+#include "admin.h"
+#include "NewEnseignant.h"
 namespace Projet2 {
 
-	
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -15,12 +12,12 @@ namespace Projet2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description résumée de enseignant
+	/// Description résumée de acceuilAdmin
 	/// </summary>
-	public ref class enseignant : public System::Windows::Forms::Form
+	public ref class acceuilAdmin : public System::Windows::Forms::Form
 	{
 	public:
-		enseignant(void)
+		acceuilAdmin(void)
 		{
 			InitializeComponent();
 			//
@@ -32,7 +29,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~enseignant()
+		~acceuilAdmin()
 		{
 			if (components)
 			{
@@ -43,8 +40,6 @@ namespace Projet2 {
 	protected:
 	private: System::Windows::Forms::Button^  button2;
 	private: System::Windows::Forms::Button^  button1;
-
-	protected:
 
 	private:
 		/// <summary>
@@ -72,48 +67,49 @@ namespace Projet2 {
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(549, 410);
+			this->panel1->Size = System::Drawing::Size(492, 389);
 			this->panel1->TabIndex = 0;
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(321, 140);
+			this->button2->Location = System::Drawing::Point(263, 142);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(170, 100);
+			this->button2->Size = System::Drawing::Size(177, 100);
 			this->button2->TabIndex = 1;
-			this->button2->Text = L"Afficher la liste de vos cours";
+			this->button2->Text = L"Ajouter un nouvel enseignant";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &enseignant::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &acceuilAdmin::button2_Click);
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(55, 140);
+			this->button1->Location = System::Drawing::Point(37, 142);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(170, 100);
+			this->button1->Size = System::Drawing::Size(177, 100);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Proposer un nouveau cours";
+			this->button1->Text = L"Consulter les cours en attente";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &enseignant::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &acceuilAdmin::button1_Click);
 			// 
-			// enseignant
+			// acceuilAdmin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(549, 410);
+			this->ClientSize = System::Drawing::Size(492, 389);
 			this->Controls->Add(this->panel1);
-			this->Name = L"enseignant";
-			this->Text = L"Arche Enseignant";
+			this->Name = L"acceuilAdmin";
+			this->Text = L"Acceuil Admin";
 			this->panel1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 ProposeCours ^form = gcnew ProposeCours();
-				 form->Show();
-				 
+				 admin ^adm = gcnew admin();
+				 adm->Show();
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 NewEnseignant ^ens = gcnew NewEnseignant();
+				 ens->Show();
 	}
 	};
 }

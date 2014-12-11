@@ -159,7 +159,7 @@ namespace Projet2 {
 						if (fichier){
 							String^ log = textBox1->Text + ";";
 							String^ pass = textBox2->Text + ";";
-							if (log != "" && pass != ""){
+							if (log != nullptr && pass != nullptr){
 								
 								
 								string charslog = netStr2CppStr(log);
@@ -167,6 +167,7 @@ namespace Projet2 {
 								fichier << charslog;
 								fichier << charspass;
 								fichier << "ETU\n";
+								fichier.close();
 							}
 							else{
 								MessageBox::Show("Champs non remplis");

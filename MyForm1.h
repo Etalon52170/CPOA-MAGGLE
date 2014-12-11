@@ -7,7 +7,9 @@
 #include <fstream>
 #include <stdio.h>
 #include "MyForm21.h"
-#include "admin.h"
+
+#include "enseignant.h"
+#include "acceuilAdmin.h"
 
 
 namespace Projet2 {
@@ -191,12 +193,24 @@ namespace Projet2 {
 							}
 							else{
 								if (c == "ADM"){
-									admin ^adm = gcnew admin();
+									acceuilAdmin ^adm = gcnew acceuilAdmin();
 									adm->Show();
 								}
 								else{
 									if (c == "ENS"){
+										std::ofstream fichier("etu_co.txt", std::ios_base::app);
+										if (fichier){
+											FILE *f = fopen("etu_co.txt", "w");
 
+											remove("azertyuiopqsdfghjklmwxcvbn");
+											fichier << etuco;
+											enseignant ^ens = gcnew enseignant();
+											ens->Show();
+											etuco.end();
+											fclose(f);
+
+										}
+										
 									}
 								}
 							}

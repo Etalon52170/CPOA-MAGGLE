@@ -1,5 +1,5 @@
 #pragma once
-#define _CRT_SECURE_NO_WARNINGS
+
 #include <windows.h>
 #include "MyForm.h"
 #include <iostream>
@@ -11,6 +11,7 @@
 
 
 #include <atlstr.h>
+#define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
 
 	using namespace System::IO;
@@ -53,6 +54,12 @@ namespace Projet2 {
 	private: System::Windows::Forms::ToolStripMenuItem^  refuserToolStripMenuItem;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+
+
+
+
+
 	private: System::ComponentModel::IContainer^  components;
 	protected:
 
@@ -71,11 +78,12 @@ namespace Projet2 {
 		{
 			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->accepterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->refuserToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -88,31 +96,21 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(2) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->Column1,
-					this->Column2
+					this->Column2, this->Column3
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
+			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(438, 375);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &admin::dataGridView1_CellContentClick);
 			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &admin::dataGridView1_CellMouseClick);
-			// 
-			// Column1
-			// 
-			this->Column1->HeaderText = L"Cours en attente";
-			this->Column1->Name = L"Column1";
-			this->Column1->ReadOnly = true;
-			// 
-			// Column2
-			// 
-			this->Column2->HeaderText = L"Enseignant responsable";
-			this->Column2->Name = L"Column2";
-			this->Column2->ReadOnly = true;
 			// 
 			// contextMenuStrip1
 			// 
@@ -137,6 +135,24 @@ namespace Projet2 {
 			this->refuserToolStripMenuItem->Text = L"Refuser";
 			this->refuserToolStripMenuItem->Click += gcnew System::EventHandler(this, &admin::refuserToolStripMenuItem_Click);
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Cours en attente";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Enseignant responsable";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			// 
+			// Column3
+			// 
+			this->Column3->HeaderText = L"Description";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			// 
 			// admin
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -156,34 +172,7 @@ namespace Projet2 {
 #pragma endregion
 	
 	private: System::Void admin_Load(System::Object^  sender, System::EventArgs^  e) {
-				 /*ifstream fichier("Cours_en_attente.txt");
-				 string monTableau;
-				 if (!fichier.is_open())
-				 {
-				 }
-				 else{
-					 bool res = false;
-					 while (getline(fichier, monTableau))
-					 {
-						 char *str1 = new char[monTableau.length() + 1];
-						 strcpy(str1, monTableau.c_str());
-						 char str2[] = ";";
-						 char * listecours;
-						 char * enseignant;
-
-						 listecours = strtok(str1, str2);
-						 enseignant = strtok(NULL, str2);
-						 String^ c = gcnew String(listecours);
-						 String^ c2 = gcnew String(enseignant);
-						 MessageBox::Show(c);
-						 MessageBox::Show(c2);
-						 ArrayList^ myAL = gcnew ArrayList;
-						 myAL->Add(c);
-						 myAL->Add(c2);
-						 dataGridView1->Rows->Add(c,c2);
-					 }
-				 }
-				 */
+				 
 				 ifstream fichier("Cours_en_attente.txt");
 				 string monTableau;
 				 if (!fichier.is_open())
@@ -200,32 +189,47 @@ namespace Projet2 {
 						 char str2[] = ";";
 						 char * logfile;
 						 char * passfile;
+						 char * desc;
 
 						 logfile = strtok(str1, str2);
 						 passfile = strtok(NULL, str2);
+						 desc = strtok(NULL, str2);
 						 String^ c = gcnew String(logfile);
 						 String^ c2 = gcnew String(passfile);
-						 ///MessageBox::Show("c : )  " + c);
-						 ///MessageBox::Show("c2 : )  " + c2);
-						 if (c != ""){
-							 tab[i] = c;
-						 }
-						 if (c2 != ""){
-
-							 tab[i + 1] = c2;
-							 
-						 }
+						 String^ c3 = gcnew String(desc);
 						 
+						 
+						 if (c != ""){
+							 ///if (i == 2){
+								 ///tab[i - 1] = c;
+							 ///}
+							 ///else{
+								 tab[i] = c;
+							 ///}
+						 }
+							 if (c2 != nullptr){
+							
+								 								 
+									 tab[i + 1] = c2;
+								 
 
-						 i= i++;
-					 }
-					 for (int j = 0; j < tab->Length; j=j+2){
-						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
-							 dataGridView1->Rows->Add(tab[j], tab[j + 1]);
-						 }
-						 }
-					 }
-					
+							 }
+							 if (c3 != nullptr){
+								 tab[i + 2] = c3;
+							 }
+							 
+							 i= i+3;
+							 }
+					 
+							 for (int j = 0; j < 99; j=j+3){
+							 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+								 
+								 dataGridView1->Rows->Add(tab[j], tab[j+1],tab[j+2]);
+								 
+							 }
+							 }
+					 
+				 }
 				 
 
 	}
@@ -235,14 +239,14 @@ namespace Projet2 {
 	}
 	private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 
-					 String^ c = dataGridView1->SelectedCells[0]->Value->ToString();
+				 
 					 /// Ecriture du cours accepter dans la liste des cours disponible			 
 
 
 					 String^ fileName = "liste_cours.txt";
 
 					 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
-					 sw->WriteLine(c + "\n");
+					 sw->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";"+ dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "\n");
 					 sw->Close();
 
 					 int index = dataGridView1->SelectedCells[0]->RowIndex;
@@ -253,7 +257,8 @@ namespace Projet2 {
 					 StreamWriter^ s = gcnew StreamWriter(f);
 					 for (int i = 0; i < dataGridView1->Rows->Count; i++)
 					 {
-						 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + "\n");
+						 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";"+dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+						 
 					 }
 
 					 s->Close();
@@ -262,7 +267,7 @@ namespace Projet2 {
 				 }
 	
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 
+				
 }
 private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
 			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
