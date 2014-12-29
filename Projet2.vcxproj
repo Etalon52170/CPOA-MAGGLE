@@ -88,7 +88,7 @@
     <ClCompile Include="Luncher.cpp" />
     <ClCompile Include="Inscription.cpp" />
     <ClCompile Include="AccueilEtu.cpp" />
-    <ClCompile Include="MyForm22.cpp" />
+    <ClCompile Include="ListeCoursDispoEtu.cpp" />
     <ClCompile Include="NewEnseignant.cpp" />
     <ClCompile Include="ProposeCours.cpp" />
   </ItemGroup>
@@ -118,7 +118,7 @@
     <ClInclude Include="AccueilEtu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm22.h">
+    <ClInclude Include="ListeCoursDispoEtu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NewEnseignant.h">
@@ -153,8 +153,8 @@
     <EmbeddedResource Include="AccueilEtu.resx">
       <DependentUpon>AccueilEtu.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm22.resx">
-      <DependentUpon>MyForm22.h</DependentUpon>
+    <EmbeddedResource Include="ListeCoursDispoEtu.resx">
+      <DependentUpon>ListeCoursDispoEtu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEnseignant.resx">
       <DependentUpon>NewEnseignant.h</DependentUpon>

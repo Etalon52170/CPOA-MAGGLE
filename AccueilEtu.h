@@ -1,5 +1,5 @@
 #pragma once
-#include "MyForm22.h"
+#include "ListeCoursDispoEtu.h"
 #include <windows.h>
 namespace Projet2 {
 
@@ -102,7 +102,7 @@ namespace Projet2 {
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 MyForm21 ^form = gcnew MyForm21();
+				 ListeCoursDispoEtu ^form = gcnew ListeCoursDispoEtu();
 				 form->Show();
 	}
 	};
