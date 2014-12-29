@@ -112,7 +112,7 @@
     <ClInclude Include="MyForm1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="Inscription.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MyForm21.h">
@@ -147,8 +147,8 @@
     <EmbeddedResource Include="MyForm1.resx">
       <DependentUpon>MyForm1.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="Inscription.resx">
+      <DependentUpon>Inscription.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm21.resx">
       <DependentUpon>MyForm21.h</DependentUpon>

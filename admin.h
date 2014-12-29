@@ -1,7 +1,7 @@
 #pragma once
 
 #include <windows.h>
-#include "MyForm.h"
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <fstream>

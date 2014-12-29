@@ -59,9 +59,6 @@
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="MyForm21.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -89,11 +86,11 @@
     <ClInclude Include="CoursEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Inscription.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="MyForm1.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
@@ -116,6 +113,15 @@
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="ProposeCours.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEns.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEtu.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
   </ItemGroup>
