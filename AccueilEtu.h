@@ -11,12 +11,12 @@ namespace Projet2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description résumée de MyForm2
+	/// Description résumée de AccueilEtu
 	/// </summary>
-	public ref class MyForm2 : public System::Windows::Forms::Form
+	public ref class AccueilEtu : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm2(void)
+		AccueilEtu(void)
 		{
 			InitializeComponent();
 			//
@@ -28,7 +28,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~MyForm2()
+		~AccueilEtu()
 		{
 			if (components)
 			{
@@ -68,7 +68,7 @@ namespace Projet2 {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Liste des cours auxquels vous pouvez vous inscrire.";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm2::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &AccueilEtu::button1_Click);
 			// 
 			// button2
 			// 
@@ -79,16 +79,16 @@ namespace Projet2 {
 			this->button2->Text = L"Liste des cours auxquels vous êtes inscrit.";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// MyForm2
+			// AccueilEtu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(546, 367);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Name = L"MyForm2";
+			this->Name = L"AccueilEtu";
 			this->Text = L"ARCHE";
-			this->Load += gcnew System::EventHandler(this, &MyForm2::MyForm2_Load);
+			this->Load += gcnew System::EventHandler(this, &AccueilEtu::MyForm2_Load);
 			this->ResumeLayout(false);
 
 		}

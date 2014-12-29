@@ -75,11 +75,11 @@ namespace Projet2 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
-			this->sinscrireToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->Cours = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Enseignant = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->sinscrireToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -88,7 +88,8 @@ namespace Projet2 {
 			// 
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(485, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(364, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -106,27 +107,16 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 24);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(485, 391);
+			this->dataGridView1->Size = System::Drawing::Size(364, 313);
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm21::dataGridView1_CellContentClick);
 			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &MyForm21::dataGridView1_CellMouseClick);
-			// 
-			// contextMenuStrip1
-			// 
-			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->sinscrireToolStripMenuItem });
-			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(135, 28);
-			// 
-			// sinscrireToolStripMenuItem
-			// 
-			this->sinscrireToolStripMenuItem->Name = L"sinscrireToolStripMenuItem";
-			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(134, 24);
-			this->sinscrireToolStripMenuItem->Text = L"s\'inscrire";
 			// 
 			// Cours
 			// 
@@ -146,14 +136,27 @@ namespace Projet2 {
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->sinscrireToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(121, 26);
+			// 
+			// sinscrireToolStripMenuItem
+			// 
+			this->sinscrireToolStripMenuItem->Name = L"sinscrireToolStripMenuItem";
+			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(120, 22);
+			this->sinscrireToolStripMenuItem->Text = L"s\'inscrire";
+			// 
 			// MyForm21
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(485, 415);
+			this->ClientSize = System::Drawing::Size(364, 337);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"MyForm21";
 			this->Text = L"Arche";
 			this->Load += gcnew System::EventHandler(this, &MyForm21::MyForm21_Load);

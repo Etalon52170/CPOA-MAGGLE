@@ -18,15 +18,6 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="MyForm1.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm2.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm21.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
     <ClCompile Include="MyForm22.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
@@ -51,15 +42,18 @@
     <ClCompile Include="CoursEtu.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
+    <ClCompile Include="Luncher.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Inscription.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="AccueilEtu.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyForm1.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm21.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="MyForm22.h">
@@ -89,14 +83,14 @@
     <ClInclude Include="Inscription.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="luncher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="AccueilEtu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm1.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm21.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
@@ -122,6 +116,12 @@
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="Inscription.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="luncher.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccueilEtu.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
   </ItemGroup>
