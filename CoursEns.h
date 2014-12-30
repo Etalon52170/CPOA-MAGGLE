@@ -139,6 +139,7 @@ namespace Projet2 {
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 	}
+
 	private: System::Void CoursEns_Load(System::Object^  sender, System::EventArgs^  e) {
 				 boolean pareil;
 				 

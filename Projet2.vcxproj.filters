@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\class">
+      <UniqueIdentifier>{f7bf3fa7-e64f-478a-9c67-1eba5f0f1760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp">
@@ -51,6 +54,12 @@
     <ClCompile Include="ListeCoursDispoEtu.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
+    <ClCompile Include="Cours.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="LesCours.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
@@ -88,6 +97,15 @@
     </ClInclude>
     <ClInclude Include="ListeCoursDispoEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="class.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Cours.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="LesCours.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

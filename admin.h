@@ -8,10 +8,9 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
-
-
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
+
 namespace Projet2 {
 
 	using namespace System::IO;

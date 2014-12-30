@@ -81,9 +81,11 @@
   <ItemGroup>
     <ClCompile Include="acceuilAdmin.cpp" />
     <ClCompile Include="admin.cpp" />
+    <ClCompile Include="Cours.cpp" />
     <ClCompile Include="CoursEns.cpp" />
     <ClCompile Include="CoursEtu.cpp" />
     <ClCompile Include="enseignant.cpp" />
+    <ClCompile Include="LesCours.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Luncher.cpp" />
     <ClCompile Include="Inscription.cpp" />
@@ -100,6 +102,8 @@
     <ClInclude Include="admin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="class.h" />
+    <ClInclude Include="Cours.h" />
     <ClInclude Include="CoursEns.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -109,6 +113,7 @@
     <ClInclude Include="enseignant.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="LesCours.h" />
     <ClInclude Include="luncher.h">
       <FileType>CppForm</FileType>
     </ClInclude>

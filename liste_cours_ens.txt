@@ -3,3 +3,7 @@ ens;je test des truc;;maggle; en attente
 ens;je test des truc;;maggle; en attente 
 ens;je test des truc;;maggle; en attente 
 ens;m;m; en attente 
+test;patate;patate; en attente 
+test;patate;patate; en attente 
+ens;patate1;patate1; en attente 
+ens;patate2;patate2; en attente 
