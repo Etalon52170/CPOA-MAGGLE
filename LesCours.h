@@ -5,6 +5,9 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <string>
+
+#define _CRT_SECURE_NO_WARNINGS
 
 #pragma once
 
