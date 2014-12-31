@@ -20,6 +20,12 @@ void Cours::setId(int idparam){
 void Cours::setTitre(std::string titreparam){
 			titre = titreparam;
 }
+
+void Cours::setEnseignant(std::string Ensparam)
+{
+	enseignant = Ensparam;
+}
+
 void Cours::setDesciption(std::string descriptionparam){
 			Description = descriptionparam;
 }
@@ -38,19 +44,23 @@ void Cours::setState(std::string stateparam){
 
 
 		// méthode qui permette de Get les propriéter d'un objet
-int Cours::GetId(int idparam){
+int Cours::GetId(){
 			return id;
 }
 
-std::string Cours::GetTitre(std::string titreparam){
+std::string Cours::GetTitre(){
 			return titre;
 }
 
-std::string Cours::GetDesciption(std::string descriptionparam){
+std::string Cours::GetEnseigant(){
+	return enseignant;
+}
+
+std::string Cours::GetDesciption(){
 			return Description;
 }
 
-int Cours::GetNbEtu(int NbEtuparam){
+int Cours::GetNbEtu(){
 			return maxEtu;
 }
 
@@ -61,7 +71,7 @@ int Cours::GetNbEtu(int NbEtuparam){
 		}
 		*/
 
-std::string Cours::GetState(std::string stateparam){
+std::string Cours::GetState(){
 			return State;
 }
 
