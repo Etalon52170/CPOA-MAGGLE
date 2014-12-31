@@ -102,7 +102,6 @@
     <ClInclude Include="admin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="class.h" />
     <ClInclude Include="Cours.h" />
     <ClInclude Include="CoursEns.h">
       <FileType>CppForm</FileType>

@@ -98,9 +98,6 @@
     <ClInclude Include="ListeCoursDispoEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="class.h">
-      <Filter>Fichiers d%27en-tête\class</Filter>
-    </ClInclude>
     <ClInclude Include="Cours.h">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
