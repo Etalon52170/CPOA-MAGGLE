@@ -16,6 +16,7 @@ ref class LesCours
 public:
 	LesCours();
 	static std::list<Cours> AdminAValider();
+	static std::list<Cours> LesCours::CoursEns();
 
 };
 
