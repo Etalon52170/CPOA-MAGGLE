@@ -14,5 +14,3 @@ je test des truc;ens;maggle
 
 patate;test;patate
 
-patate2;ens;patate2
-
