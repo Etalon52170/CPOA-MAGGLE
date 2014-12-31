@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
-
+#include "LesCours.h"
 
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
@@ -141,8 +141,8 @@ namespace Projet2 {
 	}
 
 	private: System::Void CoursEns_Load(System::Object^  sender, System::EventArgs^  e) {
-				 boolean pareil;
-				 
+				 /*boolean pareil;
+
 				 String^ name;
 				 ifstream fichier1("etu_co.txt");
 				 string montableau1;
@@ -160,8 +160,8 @@ namespace Projet2 {
 						 char str2[] = ";";
 						 char * nom;
 						 nom = strtok(str1, str2);
-						  name = gcnew String(nom);
-						  fichier1.close();
+						 name = gcnew String(nom);
+						 fichier1.close();
 					 }
 				 }
 				 ifstream fichier("liste_cours_ens.txt");
@@ -193,7 +193,7 @@ namespace Projet2 {
 						 MessageBox::Show(cc);
 						 ///MessageBox::Show(c2);
 						 ///MessageBox::Show(c3);
-						 
+
 						 if (cc == name){
 							 ///MessageBox::Show(cc + " " + name);
 							 if (c != nullptr){
@@ -227,8 +227,33 @@ namespace Projet2 {
 						 
 					 }
 					 fichier.close();
-				 }
+				 }*/
+				 LesCours lC;
+				 std::list<Cours> liste = lC.CoursEns();
 
+				 std::list<Cours>::iterator lit;
+				 for (lit = liste.begin(); lit != liste.end(); ++lit)
+				 {
+					 Cours cours = *lit;
+
+					 /*String^ c = cours.GetTitre();
+					 String^ c2 = gcnew String(passfile);
+					 String^ c3 = gcnew String(desc);*/
+
+					 
+					 std::string titre = cours.GetTitre();
+					 std::string enseignant = cours.GetEnseigant();
+					 std::string description = cours.GetDesciption();
+					 std::string statu = cours.GetState();
+
+					 String^ C1 = gcnew String(titre.c_str());
+					 String^ C2 = gcnew String(enseignant.c_str());
+					 String^ C3 = gcnew String(description.c_str());
+					 String^ C4 = gcnew String(statu.c_str());
+
+					 dataGridView1->Rows->Add(C1, C3, C4);
+					 //std::cout << *lit << ' ';
+				 }
 
 	}
 };
