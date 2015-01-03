@@ -1,10 +1,8 @@
 #include "LesCours.h"
 #include <iostream>
-#include <iostream>
 #include <string>
 #include <fstream>
 #include <stdio.h>
-#include <string>
 #include <sstream>
 #include <atlstr.h>
 #include <windows.h>

@@ -1,3 +1,4 @@
+#pragma once
 #include "Cours.h"
 #include <list>
 #include <sstream>
@@ -9,7 +10,7 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#pragma once
+
 
 ref class LesCours
 {

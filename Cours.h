@@ -2,13 +2,7 @@
 #define DEF_Cours
 
 #pragma once
-#include <string>
-#include <stdio.h>
-#include <string>
-#include <sstream>
-#include <atlstr.h>
 #include <iostream>
-#include <string>
 #include <fstream>
 #include <stdio.h>
 #include <string>
