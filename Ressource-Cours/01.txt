@@ -1,0 +1,2 @@
+text;helloWord;bonjours\n ceci est le text ecrit dans l'application lorque \n je suis consulter Mageule.;
+lien; Lien de la mort qui tue; ;

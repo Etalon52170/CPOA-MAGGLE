@@ -1,17 +1,19 @@
 #pragma once
 
 #include <windows.h>
-#include "MyForm.h"
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <stdio.h>
 #include <string>
 #include <sstream>
-
-
 #include <atlstr.h>
+
+#include "LesCours.h"
+
 #define _CRT_SECURE_NO_WARNINGS
+
 namespace Projet2 {
 
 	using namespace System::IO;
@@ -173,7 +175,7 @@ namespace Projet2 {
 	
 	private: System::Void admin_Load(System::Object^  sender, System::EventArgs^  e) {
 				 
-				 ifstream fichier("Cours_en_attente.txt");
+				 /* fichier("Cours_en_attente.txt");
 				 string monTableau;
 				 String^ c;
 				 String^ c2;
@@ -232,8 +234,31 @@ namespace Projet2 {
 							 }
 							 }
 					 
+				 }*/
+				 LesCours lC;
+				 std::list<Cours> liste = lC.AdminAValider();
+
+				 std::list<Cours>::iterator lit;
+				 for (lit = liste.begin(); lit != liste.end(); ++lit)
+				 {
+					 Cours cours = *lit;
+
+					 /*String^ c = cours.GetTitre();
+					 String^ c2 = gcnew String(passfile);
+					 String^ c3 = gcnew String(desc);*/
+
+					 std::string titre = cours.GetTitre();
+					 std::string enseignant = cours.GetEnseigant();
+					 std::string description = cours.GetDesciption();
+
+					 String^ C1 = gcnew String(titre.c_str());
+					 String^ C2 = gcnew String(enseignant.c_str());
+					 String^ C3 = gcnew String(description.c_str());
+
+					 dataGridView1->Rows->Add(C1, C2, C3);
+					 //std::cout << *lit << ' ';
 				 }
-				 
+				 //std::cout << std::endl;	 */
 
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {

@@ -1,6 +1,6 @@
 #pragma once
 #include <windows.h>
-#include "MyForm.h"
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -22,10 +22,10 @@ namespace Projet2 {
 	/// <summary>
 	/// Description résumée de MyForm
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class Inscription : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		Inscription(void)
 		{
 			InitializeComponent();
 			//
@@ -37,7 +37,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~MyForm()
+		~Inscription()
 		{
 			if (components)
 			{
@@ -116,7 +116,7 @@ namespace Projet2 {
 			this->button1->TabIndex = 4;
 			this->button1->Text = L"Valider";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &Inscription::button1_Click);
 			// 
 			// button2
 			// 
@@ -126,7 +126,7 @@ namespace Projet2 {
 			this->button2->TabIndex = 5;
 			this->button2->Text = L"Retour";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &Inscription::button2_Click);
 			// 
 			// MyForm
 			// 
@@ -141,7 +141,7 @@ namespace Projet2 {
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
 			this->Text = L"Inscription ";
-			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->Load += gcnew System::EventHandler(this, &Inscription::MyForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

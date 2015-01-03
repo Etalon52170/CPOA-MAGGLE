@@ -81,16 +81,21 @@
   <ItemGroup>
     <ClCompile Include="acceuilAdmin.cpp" />
     <ClCompile Include="admin.cpp" />
+    <ClCompile Include="Cours.cpp" />
     <ClCompile Include="CoursEns.cpp" />
     <ClCompile Include="CoursEtu.cpp" />
     <ClCompile Include="enseignant.cpp" />
+    <ClCompile Include="LesCours.cpp" />
+    <ClCompile Include="LesRessources.cpp" />
+    <ClCompile Include="ListeCoursDispoEtu1.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="MyForm1.cpp" />
-    <ClCompile Include="MyForm2.cpp" />
-    <ClCompile Include="MyForm21.cpp" />
-    <ClCompile Include="MyForm22.cpp" />
+    <ClCompile Include="Luncher.cpp" />
+    <ClCompile Include="Inscription.cpp" />
+    <ClCompile Include="AccueilEtu.cpp" />
+    <ClCompile Include="ListeCoursDispoEtu.cpp" />
     <ClCompile Include="NewEnseignant.cpp" />
     <ClCompile Include="ProposeCours.cpp" />
+    <ClCompile Include="Ressources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h" />
@@ -100,6 +105,7 @@
     <ClInclude Include="admin.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Cours.h" />
     <ClInclude Include="CoursEns.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -109,16 +115,18 @@
     <ClInclude Include="enseignant.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm1.h">
+    <ClInclude Include="LesCours.h" />
+    <ClInclude Include="LesRessources.h" />
+    <ClInclude Include="ListeCoursDispoEtu1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm.h">
+    <ClInclude Include="luncher.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm21.h">
+    <ClInclude Include="Inscription.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="MyForm22.h">
+    <ClInclude Include="AccueilEtu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="NewEnseignant.h">
@@ -127,6 +135,7 @@
     <ClInclude Include="ProposeCours.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Ressources.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="acceuilAdmin.resx">
@@ -144,17 +153,17 @@
     <EmbeddedResource Include="enseignant.resx">
       <DependentUpon>enseignant.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <DependentUpon>MyForm1.h</DependentUpon>
+    <EmbeddedResource Include="ListeCoursDispoEtu1.resx">
+      <DependentUpon>ListeCoursDispoEtu1.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
+    <EmbeddedResource Include="luncher.resx">
+      <DependentUpon>luncher.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm21.resx">
-      <DependentUpon>MyForm21.h</DependentUpon>
+    <EmbeddedResource Include="Inscription.resx">
+      <DependentUpon>Inscription.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyForm22.resx">
-      <DependentUpon>MyForm22.h</DependentUpon>
+    <EmbeddedResource Include="AccueilEtu.resx">
+      <DependentUpon>AccueilEtu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEnseignant.resx">
       <DependentUpon>NewEnseignant.h</DependentUpon>

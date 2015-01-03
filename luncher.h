@@ -1,12 +1,12 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <windows.h>
-#include "MyForm.h"
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <stdio.h>
-#include "MyForm21.h"
+#include "AccueilEtu.h"
 
 #include "enseignant.h"
 #include "acceuilAdmin.h"
@@ -23,15 +23,15 @@ namespace Projet2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description résumée de MyForm1
+	/// Description résumée de Luncher
 	/// </summary>
 
 	
 
-	public ref class MyForm1 : public System::Windows::Forms::Form
+	public ref class Luncher : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm1(void)
+		Luncher(void)
 		{
 			InitializeComponent();
 			//
@@ -43,7 +43,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~MyForm1()
+		~Luncher()
 		{
 			if (components)
 			{
@@ -83,7 +83,7 @@ namespace Projet2 {
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Connection";
 			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &MyForm1::button1_Click);
+			this->button1->Click += gcnew System::EventHandler(this, &Luncher::button1_Click);
 			// 
 			// button2
 			// 
@@ -93,7 +93,7 @@ namespace Projet2 {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Inscription";
 			this->button2->UseVisualStyleBackColor = true;
-			this->button2->Click += gcnew System::EventHandler(this, &MyForm1::button2_Click);
+			this->button2->Click += gcnew System::EventHandler(this, &Luncher::button2_Click);
 			// 
 			// textBox1
 			// 
@@ -102,7 +102,7 @@ namespace Projet2 {
 			this->textBox1->Size = System::Drawing::Size(221, 22);
 			this->textBox1->TabIndex = 2;
 			this->textBox1->Text = L"Login";
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox1_TextChanged);
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Luncher::textBox1_TextChanged);
 			// 
 			// textBox2
 			// 
@@ -111,9 +111,9 @@ namespace Projet2 {
 			this->textBox2->PasswordChar = '*';
 			this->textBox2->Size = System::Drawing::Size(221, 22);
 			this->textBox2->TabIndex = 3;
-			this->textBox2->TextChanged += gcnew System::EventHandler(this, &MyForm1::textBox2_TextChanged);
+			this->textBox2->TextChanged += gcnew System::EventHandler(this, &Luncher::textBox2_TextChanged);
 			// 
-			// MyForm1
+			// Luncher
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -122,9 +122,9 @@ namespace Projet2 {
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
-			this->Name = L"MyForm1";
+			this->Name = L"Luncher";
 			this->Text = L"Connection ARCHE";
-			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
+			this->Load += gcnew System::EventHandler(this, &Luncher::Luncher_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -184,7 +184,7 @@ namespace Projet2 {
 										
 									remove("azertyuiopqsdfghjklmwxcvbn");
 									fichier << etuco;
-									MyForm2 ^etu = gcnew MyForm2();
+									AccueilEtu ^etu = gcnew AccueilEtu();
 									etu->Show();
 									etuco.end();
 									fclose(f);
@@ -227,7 +227,7 @@ namespace Projet2 {
 
 	}
 			
-	private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void Luncher_Load(System::Object^  sender, System::EventArgs^  e) {
 
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -238,7 +238,7 @@ namespace Projet2 {
 	private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
 	}
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 MyForm ^ins = gcnew MyForm();
+			 Inscription ^ins = gcnew Inscription();
 			 ins->Show();
 			 
 }

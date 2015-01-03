@@ -1,6 +1,6 @@
 #pragma once
 #include <windows.h>
-#include "MyForm.h"
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -10,10 +10,9 @@
 
 
 #include <atlstr.h>
-#define _CRT_SECURE_NO_WARNINGS
+
 namespace Projet2 {
 
-	using namespace System::IO;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -22,12 +21,12 @@ namespace Projet2 {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Description résumée de MyForm21
+	/// Description résumée de ListeCoursDispoEtu
 	/// </summary>
-	public ref class MyForm21 : public System::Windows::Forms::Form
+	public ref class ListeCoursDispoEtu : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm21(void)
+		ListeCoursDispoEtu(void)
 		{
 			InitializeComponent();
 			//
@@ -39,7 +38,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Nettoyage des ressources utilisées.
 		/// </summary>
-		~MyForm21()
+		~ListeCoursDispoEtu()
 		{
 			if (components)
 			{
@@ -55,6 +54,7 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Cours;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Enseignant;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
+
 
 
 	private: System::ComponentModel::IContainer^  components;
@@ -89,7 +89,8 @@ namespace Projet2 {
 			// 
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(485, 24);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(364, 24);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -107,15 +108,16 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 24);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(485, 391);
+			this->dataGridView1->Size = System::Drawing::Size(364, 313);
 			this->dataGridView1->TabIndex = 1;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm21::dataGridView1_CellContentClick);
-			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &MyForm21::dataGridView1_CellMouseClick);
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ListeCoursDispoEtu::dataGridView1_CellContentClick);
+			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &ListeCoursDispoEtu::dataGridView1_CellMouseClick);
 			// 
 			// Cours
 			// 
@@ -139,26 +141,26 @@ namespace Projet2 {
 			// 
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->sinscrireToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(176, 56);
+			this->contextMenuStrip1->Size = System::Drawing::Size(121, 26);
 			// 
 			// sinscrireToolStripMenuItem
 			// 
 			this->sinscrireToolStripMenuItem->Name = L"sinscrireToolStripMenuItem";
-			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(175, 24);
+			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(120, 22);
 			this->sinscrireToolStripMenuItem->Text = L"s\'inscrire";
-			this->sinscrireToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm21::sinscrireToolStripMenuItem_Click_1);
 			// 
-			// MyForm21
+			// ListeCoursDispoEtu
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(485, 415);
+			this->ClientSize = System::Drawing::Size(364, 337);
 			this->Controls->Add(this->dataGridView1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Name = L"MyForm21";
+			this->Margin = System::Windows::Forms::Padding(2);
+			this->Name = L"ListeCoursDispoEtu";
 			this->Text = L"Arche";
-			this->Load += gcnew System::EventHandler(this, &MyForm21::MyForm21_Load);
+			this->Load += gcnew System::EventHandler(this, &ListeCoursDispoEtu::MyForm21_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
 			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
@@ -190,7 +192,6 @@ namespace Projet2 {
 						 char * cours;
 						 char * ens;
 						 char * desc;
-
 						 cours = strtok(str1, str2);
 						 ens = strtok(NULL, str2);
 						 desc = strtok(NULL, str2);
@@ -233,38 +234,10 @@ namespace Projet2 {
 
 
 	}
-		
+	
 private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
 			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
 			 contextMenuStrip1->Show(dataGridView1, e->Location);
-}
-private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 ifstream fichier("etu_co.txt");
-			 String^ c;
-			 string tabl;
-			 if (!fichier.is_open())
-			 {
-			 }
-			 else{
-				 array<String^>^ tab = gcnew array<String^>(100);
-				 bool res = false;
-				 int i = 0;
-				 while (getline(fichier, tabl))
-				 {
-					 char *str1 = new char[tabl.length() + 1];
-					 strcpy(str1, tabl.c_str());
-					 char str2[] = ";";
-					 char * nometu;
-					 nometu = strtok(str1, str2);
-					 c = gcnew String(nometu);
-					 fichier.close();
-				 }
-			 }
-			 
-			 String^ file = "liste_cours_etu.txt";
-			 StreamWriter^ swr = gcnew StreamWriter(file, true);
-			 swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
-			 swr->Close();
 }
 };
 }

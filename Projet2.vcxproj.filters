@@ -13,22 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Fichiers d%27en-tête\class">
+      <UniqueIdentifier>{f7bf3fa7-e64f-478a-9c67-1eba5f0f1760}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MyForm.cpp">
       <Filter>Fichiers sources</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm1.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm2.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm21.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClCompile>
-    <ClCompile Include="MyForm22.cpp">
-      <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
     <ClCompile Include="admin.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
@@ -51,21 +42,36 @@
     <ClCompile Include="CoursEtu.cpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClCompile>
+    <ClCompile Include="Luncher.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Inscription.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="AccueilEtu.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="ListeCoursDispoEtu.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="Cours.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="LesCours.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="LesRessources.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Ressources.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="ListeCoursDispoEtu1.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyForm1.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm21.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
-    <ClInclude Include="MyForm22.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="admin.h">
@@ -89,21 +95,33 @@
     <ClInclude Include="CoursEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Inscription.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="luncher.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="AccueilEtu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Cours.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="LesCours.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="LesRessources.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Ressources.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="ListeCoursDispoEtu1.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm1.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm21.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
-      <Filter>Fichiers de ressources</Filter>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyForm22.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="enseignant.resx">
@@ -116,6 +134,24 @@
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
     <EmbeddedResource Include="ProposeCours.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEns.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoursEtu.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inscription.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="luncher.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AccueilEtu.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeCoursDispoEtu.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
   </ItemGroup>

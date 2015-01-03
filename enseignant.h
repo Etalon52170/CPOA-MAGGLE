@@ -1,7 +1,7 @@
 #pragma once
 
 #include <windows.h>
-#include "Myform.h"
+#include "Inscription.h"
 #include "ProposeCours.h"
 #include "CoursEns.h"
 namespace Projet2 {
