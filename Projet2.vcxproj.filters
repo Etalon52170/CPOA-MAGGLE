@@ -113,6 +113,9 @@
     <ClInclude Include="Ressources.h">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
+    <ClInclude Include="ListeCoursDispoEtu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="admin.resx">
@@ -145,8 +148,8 @@
     <EmbeddedResource Include="AccueilEtu.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeCoursDispoEtu1.resx">
-      <Filter>Fichiers de ressources</Filter>
+    <EmbeddedResource Include="ListeCoursDispoEtu.resx">
+      <Filter>Fichiers d%27en-tête</Filter>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

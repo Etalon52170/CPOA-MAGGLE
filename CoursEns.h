@@ -2,8 +2,6 @@
 #include <windows.h>
 #include "Inscription.h"
 #include "LesCours.h"
-#include <iostream>
-#include <string>
 #include <fstream>
 #include <stdio.h>
 #include <string>
