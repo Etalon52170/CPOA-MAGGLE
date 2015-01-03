@@ -264,6 +264,7 @@ private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender
 			 }
 
 			 String^ file = "liste_cours_etu.txt";
+
 			 //StreamWriter^ swr = gcnew StreamWriter(file, true);
 			 //swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
 			 //swr->Close();
