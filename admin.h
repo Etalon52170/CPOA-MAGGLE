@@ -291,10 +291,7 @@ namespace Projet2 {
 						 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";"+dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
 						 
 					 }
-
 					 s->Close();
-
-
 				 }
 	
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
