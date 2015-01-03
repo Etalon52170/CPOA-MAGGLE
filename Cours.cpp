@@ -26,6 +26,11 @@ void Cours::setEnseignant(std::string Ensparam)
 	enseignant = Ensparam;
 }
 
+void Cours::setEtudiant(std::string Etuparam)
+{
+	Etudiant = Etuparam;
+}
+
 void Cours::setDesciption(std::string descriptionparam){
 			Description = descriptionparam;
 }
@@ -54,6 +59,10 @@ std::string Cours::GetTitre(){
 
 std::string Cours::GetEnseigant(){
 	return enseignant;
+}
+
+std::string Cours::GetEtudiant(){
+	return Etudiant;
 }
 
 std::string Cours::GetDesciption(){
