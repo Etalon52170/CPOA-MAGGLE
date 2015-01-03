@@ -19,6 +19,7 @@ public:
 	static std::list<Cours> LesCours::AdminAValider();
 	static std::list<Cours> LesCours::CoursEns();
 	static std::list<Cours> LesCours::CoursEtu();
+	static std::list<Cours> LesCours::CoursEtuDispo();
 
 };
 

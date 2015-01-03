@@ -1,16 +1,15 @@
 #pragma once
 #include <windows.h>
 #include "Inscription.h"
-#include <iostream>
-#include <string>
+#include "LesCours.h"
 #include <fstream>
 #include <stdio.h>
 #include <string>
 #include <sstream>
-
+#include <list>
 
 #include <atlstr.h>
-
+#define define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
 
 	using namespace System;
@@ -51,7 +50,7 @@ namespace Projet2 {
 
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  sinscrireToolStripMenuItem;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Cours;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  CoursColum;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Enseignant;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 
@@ -76,7 +75,7 @@ namespace Projet2 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
-			this->Cours = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->CoursColum = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Enseignant = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
@@ -103,7 +102,7 @@ namespace Projet2 {
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Cours,
+				this->CoursColum,
 					this->Enseignant, this->Column1
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
@@ -121,9 +120,9 @@ namespace Projet2 {
 			// 
 			// Cours
 			// 
-			this->Cours->HeaderText = L"Cours";
-			this->Cours->Name = L"Cours";
-			this->Cours->ReadOnly = true;
+			this->CoursColum->HeaderText = L"Cours";
+			this->CoursColum->Name = L"Cours";
+			this->CoursColum->ReadOnly = true;
 			// 
 			// Enseignant
 			// 
@@ -167,16 +166,103 @@ namespace Projet2 {
 			this->PerformLayout();
 
 		}
-	
+
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 				 contextMenuStrip1->Show();
 
 	}
+
 	private: System::Void MyForm21_Load(System::Object^  sender, System::EventArgs^  e) {
 
+				 LesCours lC;
+				 std::list<Cours> liste = lC.CoursEtuDispo();
+
+				 std::list<Cours>::iterator lit;
+				 for (lit = liste.begin(); lit != liste.end(); ++lit)
+				 {
+					 Cours cours = *lit;
+
+					 std::string titre = cours.GetTitre();
+					 std::string statue = cours.GetState();
+					 std::string description = cours.GetDesciption();
+
+					 String^ C1 = gcnew String(titre.c_str());
+					 String^ C2 = gcnew String(description.c_str());
+					 String^ C3 = gcnew String(statue.c_str());
+
+					 dataGridView1->Rows->Add(C1, C2, C3);
+				 }
+				 /*
 				 ifstream fichier("liste_cours.txt");
 				 string monTableau;
+				 if (!fichier.is_open())
+				 {
+				 }
+				 else{
+				 array<String^>^ tab = gcnew array<String^>(100);
+				 bool res = false;
+				 int i = 0;
+				 while (getline(fichier, monTableau))
+				 {
+				 char *str1 = new char[monTableau.length() + 1];
+				 strcpy(str1, monTableau.c_str());
+				 char str2[] = ";";
+				 char * cours;
+				 char * ens;
+				 char * desc;
+
+				 cours = strtok(str1, str2);
+				 ens = strtok(NULL, str2);
+				 desc = strtok(NULL, str2);
+				 String^ c = gcnew String(cours);
+				 String^ c2 = gcnew String(ens);
+				 String^ c3 = gcnew String(desc);
+
+				 if (c != ""){
+				 ///if (i == 2){
+				 ///tab[i - 1] = c;
+				 ///}
+				 ///else{
+				 tab[i] = c;
+				 ///}
+				 }
+				 if (c2 != nullptr){
+
+
+				 tab[i + 1] = c2;
+
+
+				 }
+
+				 if (c3 != nullptr){
+				 tab[i + 2] = c3;
+				 }
+
+				 i = i + 3;
+				 }
+
+				 for (int j = 0; j < 99; j = j + 3){
+				 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+
+				 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2]);
+
+				 }
+				 }
+
+				 }
+				 */
+
+	}
+
+	private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+				 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
+				 contextMenuStrip1->Show(dataGridView1, e->Location);
+	}
+	private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
+				 ifstream fichier("etu_co.txt");
+				 String^ c;
+				 string tabl;
 				 if (!fichier.is_open())
 				 {
 				 }
@@ -184,90 +270,23 @@ namespace Projet2 {
 					 array<String^>^ tab = gcnew array<String^>(100);
 					 bool res = false;
 					 int i = 0;
-					 while (getline(fichier, monTableau))
+					 while (getline(fichier, tabl))
 					 {
-						 char *str1 = new char[monTableau.length() + 1];
-						 strcpy(str1, monTableau.c_str());
+						 char *str1 = new char[tabl.length() + 1];
+						 strcpy(str1, tabl.c_str());
 						 char str2[] = ";";
-						 char * cours;
-						 char * ens;
-						 char * desc;
-
-						 cours = strtok(str1, str2);
-						 ens = strtok(NULL, str2);
-						 desc = strtok(NULL, str2);
-						 String^ c = gcnew String(cours);
-						 String^ c2 = gcnew String(ens);
-						 String^ c3 = gcnew String(desc);
-
-						 if (c != ""){
-							 ///if (i == 2){
-							 ///tab[i - 1] = c;
-							 ///}
-							 ///else{
-							 tab[i] = c;
-							 ///}
-						 }
-						 if (c2 != nullptr){
-
-
-							 tab[i + 1] = c2;
-
-
-						 }
-
-						 if (c3 != nullptr){
-							 tab[i + 2] = c3;
-						 }
-
-						 i = i + 3;
+						 char * nometu;
+						 nometu = strtok(str1, str2);
+						 c = gcnew String(nometu);
+						 fichier.close();
 					 }
-
-					 for (int j = 0; j < 99; j = j + 3){
-						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
-
-							 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2]);
-
-						 }
-					 }
-
 				 }
 
+				 String^ file = "liste_cours_etu.txt";
 
+				 //StreamWriter^ swr = gcnew StreamWriter(file, true);
+				 //swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
+				 //swr->Close();
 	}
-
-private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
-			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
-			 contextMenuStrip1->Show(dataGridView1, e->Location);
-}
-private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
-			 ifstream fichier("etu_co.txt");
-			 String^ c;
-			 string tabl;
-			 if (!fichier.is_open())
-			 {
-			 }
-			 else{
-				 array<String^>^ tab = gcnew array<String^>(100);
-				 bool res = false;
-				 int i = 0;
-				 while (getline(fichier, tabl))
-				 {
-					 char *str1 = new char[tabl.length() + 1];
-					 strcpy(str1, tabl.c_str());
-					 char str2[] = ";";
-					 char * nometu;
-					 nometu = strtok(str1, str2);
-					 c = gcnew String(nometu);
-					 fichier.close();
-				 }
-			 }
-
-			 String^ file = "liste_cours_etu.txt";
-
-			 //StreamWriter^ swr = gcnew StreamWriter(file, true);
-			 //swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
-			 //swr->Close();
-}
-};
+	};
 }
