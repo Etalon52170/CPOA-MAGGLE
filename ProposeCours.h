@@ -8,7 +8,10 @@
 #include <stdio.h>
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
+
 namespace Projet2 {
+
+	using namespace System::IO;
 	using System::Runtime::InteropServices::Marshal;
 	using namespace std;
 	using namespace System;
@@ -156,89 +159,90 @@ namespace Projet2 {
 
 		}
 
-		public: string netStr2CppStr(String ^ ns)
-		{
-					char* str = (char*)Marshal::StringToHGlobalAnsi(ns).ToPointer();
-					string ret(str);
-					Marshal::FreeHGlobal(IntPtr(str));
-					return ret;
-		}
-		public: void Propose(void){
-					String^ c;
-					ifstream fichier1("etu_co.txt");
-					string monTableau;
-					if (!fichier1.is_open())
+	public: string netStr2CppStr(String ^ ns)
+	{
+				char* str = (char*)Marshal::StringToHGlobalAnsi(ns).ToPointer();
+				string ret(str);
+				Marshal::FreeHGlobal(IntPtr(str));
+				return ret;
+	}
+
+	public: void Propose(void){
+				String^ c;
+				ifstream fichier1("etu_co.txt");
+				string monTableau;
+				if (!fichier1.is_open())
+				{
+				}
+				else{
+					bool res = false;
+					int i = 0;
+					while (getline(fichier1, monTableau))
 					{
+						char *str1 = new char[monTableau.length() + 1];
+						strcpy(str1, monTableau.c_str());
+						char str2[] = ";";
+						char * ensco;
+						ensco = strtok(str1, str2);
+
+						c = gcnew String(ensco);
+						fichier1.close();
 					}
-					else{
-						bool res = false;
-						int i = 0;
-						while (getline(fichier1, monTableau))
-						{
-							char *str1 = new char[monTableau.length() + 1];
-							strcpy(str1, monTableau.c_str());
-							char str2[] = ";";
-							char * ensco;
-							ensco = strtok(str1, str2);
+				}
+				if (textBox1->Text != nullptr && textBox1->Text != nullptr){
+					std::ofstream fichier("Cours_en_attente.txt", std::ios_base::app);
+					if (fichier){
+						String^ nom = textBox1->Text + ";";
+						String^ description = textBox2->Text;
+						if (nom != nullptr && description != nullptr){
 
-							c = gcnew String(ensco);
-							fichier1.close();
+
+							string name = netStr2CppStr(nom);
+							string ensconnecte = netStr2CppStr(c);
+							string desc = netStr2CppStr(description);
+							fichier << name;
+							fichier << ensconnecte + ";";
+							fichier << desc + "\n";
+							fichier.close();
 						}
+						else{
+							MessageBox::Show("Champs non remplis");
+						}
+
 					}
-					if (textBox1->Text != nullptr && textBox1->Text != nullptr){
-						std::ofstream fichier("Cours_en_attente.txt", std::ios_base::app);
-						if (fichier){
-							String^ nom = textBox1->Text + ";";
-							String^ description = textBox2->Text;
-							if (nom != nullptr && description != nullptr){
+					std::ofstream fichier2("liste_cours_ens.txt", std::ios_base::app);
+					if (fichier2){
+						String^ nomm = textBox1->Text;
+						String^ description = textBox2->Text;
+						if (nomm != nullptr && description != nullptr){
 
 
-								string name = netStr2CppStr(nom);
-								string ensconnecte = netStr2CppStr(c);
-								string desc = netStr2CppStr(description);
-								fichier << name;
-								fichier << ensconnecte + ";";
-								fichier << desc + "\n";
-								fichier.close();
-							}
-							else{
-								MessageBox::Show("Champs non remplis");
-							}
-
+							string name = netStr2CppStr(nomm);
+							string ensconnecte = netStr2CppStr(c);
+							string desc = netStr2CppStr(description);
+							fichier2 << ensconnecte + ";";
+							fichier2 << name + ";";
+							fichier2 << desc + "; en attente \n";
+							fichier2.close();
 						}
-						std::ofstream fichier2("liste_cours_ens.txt", std::ios_base::app);
-						if (fichier2){
-							String^ nomm = textBox1->Text;
-							String^ description = textBox2->Text;
-							if (nomm != nullptr && description != nullptr){
-
-
-								string name = netStr2CppStr(nomm);
-								string ensconnecte = netStr2CppStr(c);
-								string desc = netStr2CppStr(description);
-								fichier2 << ensconnecte + ";";
-								fichier2 << name + ";";
-								fichier2 << desc + "; en attente \n";
-								fichier2.close();
-							}
-							else{
-								MessageBox::Show("Champs non remplis");
-							}
-
+						else{
+							MessageBox::Show("Champs non remplis");
 						}
+
 					}
+				}
 
-				
 
-		}
+
+	}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	private:System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 this->Propose();
 
 	}
-private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
-			 this->Hide();
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 this->Hide();
 
-}
-};
+	}
+	};
 }

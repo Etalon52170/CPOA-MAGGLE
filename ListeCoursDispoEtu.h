@@ -7,11 +7,17 @@
 #include <string>
 #include <sstream>
 #include <list>
+#include <iostream>
 
+#include <iostream>
+#include <stdio.h>
+
+#include <sstream>
 #include <atlstr.h>
 #define define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
 
+	using namespace System::IO;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -283,10 +289,9 @@ namespace Projet2 {
 				 }
 
 				 String^ file = "liste_cours_etu.txt";
-
-				 //StreamWriter^ swr = gcnew StreamWriter(file, true);
-				 //swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
-				 //swr->Close();
+				 StreamWriter^ swr = gcnew StreamWriter(file, true);
+				 swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
+				 swr->Close();
 	}
-	};
+ };
 }
