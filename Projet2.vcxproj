@@ -86,6 +86,7 @@
     <ClCompile Include="CoursEtu.cpp" />
     <ClCompile Include="enseignant.cpp" />
     <ClCompile Include="LesCours.cpp" />
+    <ClCompile Include="LesRessources.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Luncher.cpp" />
     <ClCompile Include="Inscription.cpp" />
@@ -93,6 +94,7 @@
     <ClCompile Include="ListeCoursDispoEtu.cpp" />
     <ClCompile Include="NewEnseignant.cpp" />
     <ClCompile Include="ProposeCours.cpp" />
+    <ClCompile Include="Ressources.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h" />
@@ -113,6 +115,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LesCours.h" />
+    <ClInclude Include="LesRessources.h" />
     <ClInclude Include="luncher.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -131,6 +134,7 @@
     <ClInclude Include="ProposeCours.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Ressources.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="acceuilAdmin.resx">

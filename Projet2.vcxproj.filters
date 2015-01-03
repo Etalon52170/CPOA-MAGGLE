@@ -60,6 +60,12 @@
     <ClCompile Include="LesCours.cpp">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClCompile>
+    <ClCompile Include="LesRessources.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
+    <ClCompile Include="Ressources.cpp">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
@@ -102,6 +108,12 @@
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
     <ClInclude Include="LesCours.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="LesRessources.h">
+      <Filter>Fichiers d%27en-tête\class</Filter>
+    </ClInclude>
+    <ClInclude Include="Ressources.h">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
   </ItemGroup>
