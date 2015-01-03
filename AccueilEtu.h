@@ -81,7 +81,9 @@ namespace Projet2 {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Liste des cours auxquels vous êtes inscrit.";
 			this->button2->UseVisualStyleBackColor = true;
+
 			this->button2->Click += gcnew System::EventHandler(this, &AccueilEtu::button2_Click_1);
+
 			// 
 			// AccueilEtu
 			// 
@@ -115,4 +117,5 @@ namespace Projet2 {
 			 form->Show();
 }
 };
+
 }

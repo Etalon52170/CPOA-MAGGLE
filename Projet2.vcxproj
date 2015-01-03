@@ -125,9 +125,6 @@
     <ClInclude Include="AccueilEtu.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="ListeCoursDispoEtu.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="NewEnseignant.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -160,9 +157,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AccueilEtu.resx">
       <DependentUpon>AccueilEtu.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListeCoursDispoEtu.resx">
-      <DependentUpon>ListeCoursDispoEtu.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEnseignant.resx">
       <DependentUpon>NewEnseignant.h</DependentUpon>

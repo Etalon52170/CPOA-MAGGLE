@@ -101,9 +101,6 @@
     <ClInclude Include="AccueilEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="ListeCoursDispoEtu.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Cours.h">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClInclude>
@@ -148,7 +145,7 @@
     <EmbeddedResource Include="AccueilEtu.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListeCoursDispoEtu.resx">
+    <EmbeddedResource Include="ListeCoursDispoEtu1.resx">
       <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
   </ItemGroup>
