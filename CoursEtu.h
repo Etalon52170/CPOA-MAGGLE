@@ -1,5 +1,6 @@
 #pragma once
 #include <windows.h>
+#include "Inscription.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -205,14 +206,15 @@ namespace Projet2 {
 								 tab[i + 3] = c4;
 							 }
 						 }
-							 i = i + 4;
-						 }
-					 
+						 i = i + 4;
+					 }
+
+
 
 					 for (int j = 0; j < 99; j = j + 4){
 						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
 
-							 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2],tab[j+3]);
+							 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2], tab[j + 3]);
 
 						 }
 					 }
@@ -220,4 +222,6 @@ namespace Projet2 {
 				 }
 	}
 };
+
 }
+
