@@ -1,2 +1,4 @@
-swag;cours1;ens;hkejhrzkjerhkzjer;accepte
-swag;cours2;ens;rhzjegrjzhegrjh;listeAttente
+swag;hh; ens; fde
+swag;BDD; ens1; Apprend a faire de la base de donnees
+swag;2; ens; 2
+test;2; ens; 2

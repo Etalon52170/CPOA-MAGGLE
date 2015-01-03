@@ -1,12 +1,12 @@
-test tout;ens;testt out
+BDD;ens1;Apprend a faire de la base de donnees
 
-test tout;ens;testt out
+bdd;ens;base e donnees
 
-Cours qui defonce;ens;Ta raison ma gueule
+hh;ens;fde
 
-propo;ens;ezhfkjezrhjze zejrjzer zer zer ze
+2;ens;2
 
-m;ens;m
+3;ens;3
 
 patate;test;patate
 
