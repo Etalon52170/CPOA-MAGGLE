@@ -1,6 +1,7 @@
 #pragma once
 #include <windows.h>
 #include "Inscription.h"
+#include "LesCours.h"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -141,8 +142,25 @@ namespace Projet2 {
 	}
 	private: System::Void CoursEns_Load(System::Object^  sender, System::EventArgs^  e) {
 				 
-				 
-				 String^ name;
+				 LesCours lC;
+				 std::list<Cours> liste = lC.CoursEns();
+
+				 std::list<Cours>::iterator lit;
+				 for (lit = liste.begin(); lit != liste.end(); ++lit)
+				 {
+					 Cours cours = *lit;
+
+					 std::string titre = cours.GetTitre();
+					 std::string statue = cours.GetState();
+					 std::string description = cours.GetDesciption();
+
+					 String^ C1 = gcnew String(titre.c_str());
+					 String^ C2 = gcnew String(description.c_str());
+					 String^ C3 = gcnew String(statue.c_str());
+
+					 dataGridView1->Rows->Add(C1, C2, C3);
+				 }
+				/* String^ name;
 				 ifstream fichier1("etu_co.txt");
 				 string montableau1;
 				 if (!fichier1.is_open())
@@ -224,9 +242,7 @@ namespace Projet2 {
 						 
 					 }
 					 fichier.close();
-				 }
-
-
+				 }*/
 	}
 };
 }

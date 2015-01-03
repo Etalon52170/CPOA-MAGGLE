@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <string>
 #include <sstream>
-
+#include "LesCours.h"
 
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
@@ -52,16 +52,6 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
 	protected:
-
-
-
-
-
-
-
-
-
-
 
 	private:
 		/// <summary>
@@ -137,89 +127,29 @@ namespace Projet2 {
 		}
 #pragma endregion
 	private: System::Void CoursEtu_Load(System::Object^  sender, System::EventArgs^  e) {
-				 ifstream file("etu_co.txt");
-				 String^ nom;
-				 string tabl;
-				 if (!file.is_open())
+
+				 LesCours lC;
+				 std::list<Cours> liste = lC.CoursEtu();
+
+				 std::list<Cours>::iterator lit;
+				 for (lit = liste.begin(); lit != liste.end(); ++lit)
 				 {
+					 Cours cours = *lit;
+
+					 std::string etudiant = cours.GetEtudiant();
+					 std::string titre = cours.GetTitre();
+					 std::string enseignant = cours.GetEnseigant();
+					 std::string description = cours.GetDesciption();
+
+					 String^ C = gcnew String(etudiant.c_str());
+					 String^ C1 = gcnew String(titre.c_str());
+					 String^ C2 = gcnew String(enseignant.c_str());
+					 String^ C3 = gcnew String(description.c_str());
+					 
+
+					 dataGridView1->Rows->Add(C, C1, C2, C3);
 				 }
-				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(file, tabl))
-					 {
-						 char *str1 = new char[tabl.length() + 1];
-						 strcpy(str1, tabl.c_str());
-						 char str2[] = ";";
-						 char * nometu;
-						 nometu = strtok(str1, str2);
-						 nom = gcnew String(nometu);
-						 file.close();
-					 }
-				 }
-				 ifstream fichier("liste_cours_etu.txt");
-				 string monTableau;
-				 if (!fichier.is_open())
-				 {
-				 }
-				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(fichier, monTableau))
-					 {
-						 char *str1 = new char[monTableau.length() + 1];
-						 strcpy(str1, monTableau.c_str());
-						 char str2[] = ";";
-						 char * cours;
-						 char * ens;
-						 char * desc;
-						 char * nometu;
-						 nometu = strtok(str1, str2);
-						 cours = strtok(NULL, str2);
-						 ens = strtok(NULL, str2);
-						 desc = strtok(NULL, str2);
-						 String^ c4 = gcnew String(desc);
-						 String^ c = gcnew String(nometu);
-						 String^ c2 = gcnew String(cours);
-						 String^ c3 = gcnew String(ens);
-						 if (c == nom){
-							 if (c != nullptr){
 
-								 tab[i] = c;
-
-							 }
-							 if (c2 != nullptr){
-
-
-								 tab[i + 1] = c2;
-
-
-							 }
-
-							 if (c3 != nullptr){
-								 tab[i + 2] = c3;
-							 }
-
-							 if (c4 != nullptr){
-								 tab[i + 3] = c4;
-							 }
-						 }
-						 i = i + 4;
-					 }
-
-
-
-					 for (int j = 0; j < 99; j = j + 4){
-						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
-
-							 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2], tab[j + 3]);
-
-						 }
-					 }
-
-				 }
 	}
 };
 

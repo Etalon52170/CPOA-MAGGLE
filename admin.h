@@ -184,10 +184,6 @@ namespace Projet2 {
 				 {
 					 Cours cours = *lit;
 
-					 /*String^ c = cours.GetTitre();
-					 String^ c2 = gcnew String(passfile);
-					 String^ c3 = gcnew String(desc);*/
-
 					 std::string titre = cours.GetTitre();
 					 std::string enseignant = cours.GetEnseigant();
 					 std::string description = cours.GetDesciption();
@@ -197,10 +193,7 @@ namespace Projet2 {
 					 String^ C3 = gcnew String(description.c_str());
 
 					 dataGridView1->Rows->Add(C1, C2, C3);
-					 //std::cout << *lit << ' ';
 				 }
-				 //std::cout << std::endl;	 */
-
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 				 contextMenuStrip1->Show();
