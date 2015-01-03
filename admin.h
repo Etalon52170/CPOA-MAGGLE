@@ -169,68 +169,68 @@ namespace Projet2 {
 			this->ResumeLayout(false);
 
 		}
-		
+
 
 #pragma endregion
-	
+
 	private: System::Void admin_Load(System::Object^  sender, System::EventArgs^  e) {
-				 
+
 				 /* fichier("Cours_en_attente.txt");
 				 string monTableau;
 				 if (!fichier.is_open())
 				 {
 				 }
 				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(fichier, monTableau))
-					 {
-						 char *str1 = new char[monTableau.length() + 1];
-						 strcpy(str1, monTableau.c_str());
-						 char str2[] = ";";
-						 char * logfile;
-						 char * passfile;
-						 char * desc;
+				 array<String^>^ tab = gcnew array<String^>(100);
+				 bool res = false;
+				 int i = 0;
+				 while (getline(fichier, monTableau))
+				 {
+				 char *str1 = new char[monTableau.length() + 1];
+				 strcpy(str1, monTableau.c_str());
+				 char str2[] = ";";
+				 char * logfile;
+				 char * passfile;
+				 char * desc;
 
-						 logfile = strtok(str1, str2);
-						 passfile = strtok(NULL, str2);
-						 desc = strtok(NULL, str2);
-						 String^ c = gcnew String(logfile);
-						 String^ c2 = gcnew String(passfile);
-						 String^ c3 = gcnew String(desc);
-						 
-						 
-						 if (c != ""){
-							 ///if (i == 2){
-								 ///tab[i - 1] = c;
-							 ///}
-							 ///else{
-								 tab[i] = c;
-							 ///}
-						 }
-							 if (c2 != nullptr){
-							
-								 								 
-									 tab[i + 1] = c2;
-								 
+				 logfile = strtok(str1, str2);
+				 passfile = strtok(NULL, str2);
+				 desc = strtok(NULL, str2);
+				 String^ c = gcnew String(logfile);
+				 String^ c2 = gcnew String(passfile);
+				 String^ c3 = gcnew String(desc);
 
-							 }
-							 if (c3 != nullptr){
-								 tab[i + 2] = c3;
-							 }
-							 
-							 i= i+3;
-							 }
-					 
-							 for (int j = 0; j < 99; j=j+3){
-							 if (tab[j] != nullptr && tab[j + 1] != nullptr){
-								 
-								 dataGridView1->Rows->Add(tab[j], tab[j+1],tab[j+2]);
-								 
-							 }
-							 }
-					 
+
+				 if (c != ""){
+				 ///if (i == 2){
+				 ///tab[i - 1] = c;
+				 ///}
+				 ///else{
+				 tab[i] = c;
+				 ///}
+				 }
+				 if (c2 != nullptr){
+
+
+				 tab[i + 1] = c2;
+
+
+				 }
+				 if (c3 != nullptr){
+				 tab[i + 2] = c3;
+				 }
+
+				 i= i+3;
+				 }
+
+				 for (int j = 0; j < 99; j=j+3){
+				 if (tab[j] != nullptr && tab[j + 1] != nullptr){
+
+				 dataGridView1->Rows->Add(tab[j], tab[j+1],tab[j+2]);
+
+				 }
+				 }
+
 				 }*/
 				 LesCours lC;
 				 std::list<Cours> liste = lC.AdminAValider();
@@ -260,40 +260,61 @@ namespace Projet2 {
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 				 contextMenuStrip1->Show();
-				 
+
 	}
 	private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-				 
-				 
-					 /// Ecriture du cours accepter dans la liste des cours disponible			 
 
 
-					 String^ fileName = "liste_cours.txt";
+				 /// Ecriture du cours accepter dans la liste des cours disponible			 
 
-					 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
-					 sw->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";"+ dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "\n");
-					 sw->Close();
+				 String^ file = "liste_cours_ens.txt";
+				 StreamWriter^ swr = gcnew StreamWriter(file, true);
+				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";accepte " + "\n");
+				 swr->Close();
+				 String^ fileName = "liste_cours.txt";
 
-					 int index = dataGridView1->SelectedCells[0]->RowIndex;
-					 dataGridView1->Rows->RemoveAt(index);
+				 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
+				 sw->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "\n");
+				 sw->Close();
 
-					 String^ f = "Cours_en_attente.txt";
+				 int index = dataGridView1->SelectedCells[0]->RowIndex;
+				 dataGridView1->Rows->RemoveAt(index);
 
-					 StreamWriter^ s = gcnew StreamWriter(f);
-					 for (int i = 0; i < dataGridView1->Rows->Count; i++)
-					 {
-						 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";"+dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
-						 
-					 }
-					 s->Close();
+				 String^ f = "Cours_en_attente.txt";
+
+				 StreamWriter^ s = gcnew StreamWriter(f);
+				 for (int i = 0; i < dataGridView1->Rows->Count; i++)
+				 {
+					 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+
 				 }
-	
-private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-				
-}
-private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
-			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
-			 contextMenuStrip1->Show(dataGridView1,e->Location);
-}
-};
+
+				 s->Close();
+	}
+
+	private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+				 String^ file = "liste_cours_ens.txt";
+				 StreamWriter^ swr = gcnew StreamWriter(file, true);
+				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";refuse " + "\n");
+				 swr->Close();
+
+				 int index = dataGridView1->SelectedCells[0]->RowIndex;
+				 dataGridView1->Rows->RemoveAt(index);
+
+				 String^ f = "Cours_en_attente.txt";
+
+				 StreamWriter^ s = gcnew StreamWriter(f);
+				 for (int i = 0; i < dataGridView1->Rows->Count; i++)
+				 {
+					 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+
+				 }
+				 s->Close();
+	}
+
+	private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+				 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
+				 contextMenuStrip1->Show(dataGridView1, e->Location);
+	}
+	};
 }

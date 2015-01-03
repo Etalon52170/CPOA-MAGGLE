@@ -1,6 +1,7 @@
 #pragma once
 #include "ListeCoursDispoEtu.h"
 #include <windows.h>
+#include "CoursEtu.h"
 namespace Projet2 {
 
 	using namespace System;
@@ -62,9 +63,10 @@ namespace Projet2 {
 			// 
 			// button1
 			// 
-			this->button1->Location = System::Drawing::Point(76, 120);
+			this->button1->Location = System::Drawing::Point(57, 98);
+			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(170, 100);
+			this->button1->Size = System::Drawing::Size(128, 81);
 			this->button1->TabIndex = 0;
 			this->button1->Text = L"Liste des cours auxquels vous pouvez vous inscrire.";
 			this->button1->UseVisualStyleBackColor = true;
@@ -72,20 +74,23 @@ namespace Projet2 {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(299, 120);
+			this->button2->Location = System::Drawing::Point(224, 98);
+			this->button2->Margin = System::Windows::Forms::Padding(2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(170, 100);
+			this->button2->Size = System::Drawing::Size(128, 81);
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Liste des cours auxquels vous êtes inscrit.";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &AccueilEtu::button2_Click_1);
 			// 
 			// AccueilEtu
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(546, 367);
+			this->ClientSize = System::Drawing::Size(410, 298);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"AccueilEtu";
 			this->Text = L"ARCHE";
 			this->Load += gcnew System::EventHandler(this, &AccueilEtu::MyForm2_Load);
@@ -101,9 +106,13 @@ namespace Projet2 {
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-				 ListeCoursDispoEtu ^form = gcnew ListeCoursDispoEtu();
-				 form->Show();
+	private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e) {
+				 CoursEtu ^f = gcnew CoursEtu();
+				 f->Show();
 	}
-	};
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			 ListeCoursDispoEtu ^form = gcnew ListeCoursDispoEtu();
+			 form->Show();
+}
+};
 }

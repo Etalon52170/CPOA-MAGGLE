@@ -171,7 +171,7 @@ namespace Projet2 {
 #pragma endregion
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 				 contextMenuStrip1->Show();
-	
+
 	}
 	private: System::Void MyForm21_Load(System::Object^  sender, System::EventArgs^  e) {
 
@@ -192,6 +192,7 @@ namespace Projet2 {
 						 char * cours;
 						 char * ens;
 						 char * desc;
+
 						 cours = strtok(str1, str2);
 						 ens = strtok(NULL, str2);
 						 desc = strtok(NULL, str2);
@@ -225,7 +226,7 @@ namespace Projet2 {
 					 for (int j = 0; j < 99; j = j + 3){
 						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
 
-							 dataGridView1->Rows->Add(tab[j], tab[j + 1],tab[j+2]);
+							 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2]);
 
 						 }
 					 }
@@ -234,10 +235,38 @@ namespace Projet2 {
 
 
 	}
-	
+
 private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
 			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
 			 contextMenuStrip1->Show(dataGridView1, e->Location);
+}
+private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
+			 ifstream fichier("etu_co.txt");
+			 String^ c;
+			 string tabl;
+			 if (!fichier.is_open())
+			 {
+			 }
+			 else{
+				 array<String^>^ tab = gcnew array<String^>(100);
+				 bool res = false;
+				 int i = 0;
+				 while (getline(fichier, tabl))
+				 {
+					 char *str1 = new char[tabl.length() + 1];
+					 strcpy(str1, tabl.c_str());
+					 char str2[] = ";";
+					 char * nometu;
+					 nometu = strtok(str1, str2);
+					 c = gcnew String(nometu);
+					 fichier.close();
+				 }
+			 }
+
+			 String^ file = "liste_cours_etu.txt";
+			 //StreamWriter^ swr = gcnew StreamWriter(file, true);
+			 //swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
+			 //swr->Close();
 }
 };
 }
