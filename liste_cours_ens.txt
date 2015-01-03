@@ -1,0 +1,10 @@
+ens;1;1; en attente 
+ens;2;2; en attente 
+ens;3;3; en attente 
+ens;2; 2; accepte
+
+ens;3; 3;accepte 
+
+ens;1; 1;refuse 
+
+ens;8;8; en attente 
