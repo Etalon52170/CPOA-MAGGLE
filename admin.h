@@ -175,6 +175,9 @@ namespace Projet2 {
 				 
 				 ifstream fichier("Cours_en_attente.txt");
 				 string monTableau;
+				 String^ c;
+				 String^ c2;
+				 String^ c3;
 				 if (!fichier.is_open())
 				 {
 				 }
@@ -194,9 +197,9 @@ namespace Projet2 {
 						 logfile = strtok(str1, str2);
 						 passfile = strtok(NULL, str2);
 						 desc = strtok(NULL, str2);
-						 String^ c = gcnew String(logfile);
-						 String^ c2 = gcnew String(passfile);
-						 String^ c3 = gcnew String(desc);
+						  c = gcnew String(logfile);
+						  c2 = gcnew String(passfile);
+						  c3 = gcnew String(desc);
 						 
 						 
 						 if (c != ""){
@@ -242,7 +245,10 @@ namespace Projet2 {
 				 
 					 /// Ecriture du cours accepter dans la liste des cours disponible			 
 
-
+					 String^ file = "liste_cours_ens.txt";
+					 StreamWriter^ swr = gcnew StreamWriter(file, true);
+					 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" +dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";accepte " + "\n");
+					 swr->Close();
 					 String^ fileName = "liste_cours.txt";
 
 					 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
@@ -267,7 +273,24 @@ namespace Projet2 {
 				 }
 	
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-				
+			 String^ file = "liste_cours_ens.txt";
+			 StreamWriter^ swr = gcnew StreamWriter(file, true);
+			 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";refuse " + "\n");
+			 swr->Close();
+
+			 int index = dataGridView1->SelectedCells[0]->RowIndex;
+			 dataGridView1->Rows->RemoveAt(index);
+
+			 String^ f = "Cours_en_attente.txt";
+
+			 StreamWriter^ s = gcnew StreamWriter(f);
+			 for (int i = 0; i < dataGridView1->Rows->Count; i++)
+			 {
+				 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+
+			 }
+
+			 s->Close();
 }
 private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
 			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);

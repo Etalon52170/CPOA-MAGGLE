@@ -140,7 +140,7 @@ namespace Projet2 {
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 	}
 	private: System::Void CoursEns_Load(System::Object^  sender, System::EventArgs^  e) {
-				 boolean pareil;
+				 
 				 
 				 String^ name;
 				 ifstream fichier1("etu_co.txt");
@@ -190,8 +190,6 @@ namespace Projet2 {
 						 String^ c2 = gcnew String(passfile);
 						 String^ c3 = gcnew String(desc);
 						 MessageBox::Show(cc);
-						 ///MessageBox::Show(c2);
-						 ///MessageBox::Show(c3);
 						 
 						 if (cc == name){
 							 ///MessageBox::Show(cc + " " + name);

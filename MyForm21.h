@@ -1,6 +1,7 @@
 #pragma once
 #include "MyForm22.h"
 #include <windows.h>
+#include "CoursEtu.h"
 namespace Projet2 {
 
 	using namespace System;
@@ -78,6 +79,7 @@ namespace Projet2 {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Liste des cours auxquels vous êtes inscrit.";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MyForm2::button2_Click);
 			// 
 			// MyForm2
 			// 
@@ -104,6 +106,10 @@ namespace Projet2 {
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 				 MyForm21 ^form = gcnew MyForm21();
 				 form->Show();
+	}
+	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+				 CoursEtu ^f = gcnew CoursEtu();
+				 f->Show();
 	}
 	};
 }
