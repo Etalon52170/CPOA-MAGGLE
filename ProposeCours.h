@@ -254,7 +254,7 @@ namespace Projet2 {
 							fichier2 << ID3 + ";";
 							fichier2 << ensconnecte + ";";
 							fichier2 << name + ";";
-							fichier2 << desc + "; en attente \n";
+							fichier2 << desc + ";en attente\n";
 							fichier2.close();
 						}
 						else{

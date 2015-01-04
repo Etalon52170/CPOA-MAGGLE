@@ -16,7 +16,7 @@ void Ressources::setTitre(std::string Titreparam){
 	titre = Titreparam;
 }
 void Ressources::setValue(std::string Valueparam){
-	value = value;
+	value = Valueparam;
 }
 
 // Get

@@ -176,7 +176,6 @@ namespace Projet2 {
 
 		private: System::Void Lressource_Load(std::string ID) {
 
-
 					 LesRessources LR;
 					 std::list<Ressources> LesR = LR.findByCours(ID);
 
@@ -200,7 +199,7 @@ namespace Projet2 {
 
 	private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 				 System::String^ titre = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
-				 System::String^ value = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+				 System::String^ value = dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString();
 
 				 msclr::interop::marshal_context context;
 				 std::string Title = context.marshal_as<std::string>(titre);

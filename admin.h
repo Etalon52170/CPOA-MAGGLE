@@ -224,7 +224,7 @@ namespace Projet2 {
 
 				 //Création fichier 
 
-				 String^ ID = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString()+".txt";
+				 String^ ID = " "+dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString()+".txt";
 				 msclr::interop::marshal_context context;
 				 std::string standardString = context.marshal_as<std::string>(ID);
 
@@ -235,7 +235,7 @@ namespace Projet2 {
 				 // Ecrire la validation du cours
 				 String^ file = "liste_cours_ens.txt";
 				 StreamWriter^ swr = gcnew StreamWriter(file, true);
-				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";accepte " + "\n");
+				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";accepte" + "\n");
 				 swr->Close();
 				 String^ fileName = "liste_cours.txt";
 
@@ -264,7 +264,7 @@ namespace Projet2 {
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 String^ file = "liste_cours_ens.txt";
 			 StreamWriter^ swr = gcnew StreamWriter(file, true);
-			 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";refuse " + "\n");
+			 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";refuse" + "\n");
 			 swr->Close();
 
 			 int index = dataGridView1->SelectedCells[0]->RowIndex;

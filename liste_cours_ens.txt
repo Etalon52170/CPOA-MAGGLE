@@ -1,3 +1,15 @@
 1;ens;patate;patate; en attente 
 1;ens; patate; patate;accepte 
 
+2;ens;2;2; en attente 
+2;ens; 2; 2;accepte 
+
+3;ens;3;3; en attente 
+3;ens; 3;3;accepte
+
+4;ens;4;4;en attente
+4;ens; 4;4;accepte
+
+5;ens;5;5;en attente
+5;ens; 5;5;accepte
+

@@ -188,12 +188,12 @@ namespace Projet2 {
 				
 	}
 private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-			 System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+				 System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
 
-			 msclr::interop::marshal_context context;
-			 std::string ID = context.marshal_as<std::string>(managedString);
-			 ConsulterRessourceEns ^CRE = gcnew  ConsulterRessourceEns(ID);
-			 CRE->Show();
+				 msclr::interop::marshal_context context;
+				 std::string ID = context.marshal_as<std::string>(managedString);
+				 ConsulterRessourceEns ^CRE = gcnew  ConsulterRessourceEns(ID);
+				 CRE->Show();
 }
 
 private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
