@@ -269,7 +269,7 @@ namespace Projet2 {
 					FILE *f = fopen("LastInsertID.txt", "w");
 
 					remove("azertyuiopqsdfghjklmwxcvbn0123456789");
-					fichier << monId;
+					fichier << IDNum;
 					fclose(f);
 				}
 

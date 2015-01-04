@@ -14,9 +14,7 @@ LesRessources::LesRessources()
 std::list<Ressources> LesRessources::findByCours(int idCours)
 {
 	std::list<Ressources> LRes;
-	std::string chemin = "Ressource-Cours/";
-	chemin.append(std::to_string(idCours));
-	chemin.append(".txt");
+	std::string chemin = std::to_string(idCours)+".txt";
 	std::ifstream fichier(chemin);// fichier à lire
 	std::string monTableau;
 	if (fichier.is_open())
