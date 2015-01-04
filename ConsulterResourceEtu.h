@@ -2,7 +2,7 @@
 #include "LesRessources.h"
 #include <list>
 #include "AfficherRessource.h"
-
+#include <msclr\marshal_cppstd.h>
 namespace Projet2 {
 
 	using namespace System;

@@ -3,6 +3,7 @@
 #include "LesRessources.h"
 #include "AfficherRessource.h"
 #include "AjouterResource.h"
+#include <msclr\marshal_cppstd.h>
 namespace Projet2 {
 
 	using namespace System;
