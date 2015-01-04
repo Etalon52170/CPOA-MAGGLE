@@ -9,9 +9,11 @@
 #include <string>
 #include <sstream>
 #include <atlstr.h>
-
 #include "LesCours.h"
 
+
+
+#include <msclr\marshal_cppstd.h>
 #define _CRT_SECURE_NO_WARNINGS
 
 namespace Projet2 {
@@ -220,8 +222,17 @@ namespace Projet2 {
 	}
 	private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-				 /// Ecriture du cours accepter dans la liste des cours disponible			 
+				 //Création fichier 
 
+				 String^ ID = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString()+".txt";
+				 msclr::interop::marshal_context context;
+				 std::string standardString = context.marshal_as<std::string>(ID);
+
+				 std::ofstream o(standardString);
+				 o << "";
+
+
+				 // Ecrire la validation du cours
 				 String^ file = "liste_cours_ens.txt";
 				 StreamWriter^ swr = gcnew StreamWriter(file, true);
 				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";accepte " + "\n");
@@ -245,6 +256,7 @@ namespace Projet2 {
 
 				 }
 				 s->Close();
+
 	}
 
 
