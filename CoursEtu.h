@@ -55,6 +55,9 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  ConsulterToolStripMenuItem;
+	private: System::ComponentModel::IContainer^  components;
 
 
 
@@ -65,7 +68,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -74,13 +77,17 @@ namespace Projet2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->IDColum = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->ConsulterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -96,7 +103,7 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->Size = System::Drawing::Size(620, 481);
@@ -128,17 +135,31 @@ namespace Projet2 {
 			this->Column4->HeaderText = L"Description";
 			this->Column4->Name = L"Column4";
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(158, 48);
+			// 
+			// ConsulterToolStripMenuItem
+			// 
+			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->ConsulterToolStripMenuItem->Text = L"Consulter cours";
+			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &CoursEtu::ConsulterToolStripMenuItem_Click);
+			// 
 			// CoursEtu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(620, 481);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"CoursEtu";
 			this->Text = L"CoursEtu";
 			this->Load += gcnew System::EventHandler(this, &CoursEtu::CoursEtu_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -170,15 +191,14 @@ namespace Projet2 {
 				 }
 	}
 
-			 private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
 
-						  System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
-
-						  msclr::interop::marshal_context context;
-						  std::string ID = context.marshal_as<std::string>(managedString);
-						  ConsulterResourceEtu ^CRE = gcnew ConsulterResourceEtu(ID);
-						  CRE->Show();
-			 }
+			 msclr::interop::marshal_context context;
+			 std::string ID = context.marshal_as<std::string>(managedString);
+			 ConsulterResourceEtu ^CRE = gcnew ConsulterResourceEtu(ID);
+			 CRE->Show();
+}
 };
 
 }

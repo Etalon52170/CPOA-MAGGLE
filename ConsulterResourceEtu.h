@@ -41,6 +41,9 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  ConsulterToolStripMenuItem;
+	private: System::ComponentModel::IContainer^  components;
 	protected:
 
 
@@ -50,7 +53,7 @@ namespace Projet2 {
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -59,11 +62,15 @@ namespace Projet2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->ConsulterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -110,6 +117,19 @@ namespace Projet2 {
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(182, 48);
+			// 
+			// ConsulterToolStripMenuItem
+			// 
+			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(181, 22);
+			this->ConsulterToolStripMenuItem->Text = L"Consulter Ressource";
+			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterResourceEtu::ConsulterToolStripMenuItem_Click);
+			// 
 			// ConsulterResourceEtu
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -119,6 +139,7 @@ namespace Projet2 {
 			this->Name = L"ConsulterResourceEtu";
 			this->Text = L"ConsulterResourceEtu";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -146,5 +167,9 @@ namespace Projet2 {
 					 dataGridView1->Rows->Add(C1, C2, C3);
 				 }
 	}
-	};
+
+	private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+};
 }
