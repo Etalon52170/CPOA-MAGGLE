@@ -33,6 +33,11 @@ std::list<Cours> LesCours::AdminAValider()
 				std::string delimiter = ";"; // délimiteur qui permet de split la ligne
 
 				// on récupére le titre PS: attention a l'ordre dans le fichier
+				std::string ID = monTableau.substr(0, monTableau.find(delimiter));
+				monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
+
+
+				// on récupére le titre PS: attention a l'ordre dans le fichier
 				std::string titre = monTableau.substr(0, monTableau.find(delimiter));
 				monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
@@ -57,7 +62,9 @@ std::list<Cours> LesCours::AdminAValider()
 				String^ c2 = gcnew String(passfile);
 				String^ c3 = gcnew String(desc);*/
 
-
+				if (ID != ""){
+					cours.setId(ID);
+				}
 				if (titre != ""){
 					/*if (i == 2){
 					tab[i - 1] = c;
@@ -112,6 +119,10 @@ std::list<Cours> LesCours::CoursEns(){
 					Cours cours; // création d'un cours cours
 					std::string delimiter = ";"; // délimiteur qui permet de split la ligne
 
+					// on récupére le titre PS: attention a l'ordre dans le fichier
+					std::string ID = monTableau.substr(0, monTableau.find(delimiter));
+					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
+
 					// on récupére l'enseignant PS: attention a l'ordre dans le fichier
 					std::string enseignant = monTableau.substr(0, monTableau.find(delimiter));
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
@@ -129,6 +140,9 @@ std::list<Cours> LesCours::CoursEns(){
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
 					if (enseignant == monNom){
+						if (ID != ""){
+							cours.setId(ID);
+						}
 						if (enseignant != ""){
 							cours.setEnseignant(enseignant);
 						}
@@ -186,6 +200,10 @@ std::list<Cours> LesCours::CoursEtu(){
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
 					// on récupére le titre PS: attention a l'ordre dans le fichier
+					std::string ID = monTableau.substr(0, monTableau.find(delimiter));
+					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
+
+					// on récupére le titre PS: attention a l'ordre dans le fichier
 					std::string titre = monTableau.substr(0, monTableau.find(delimiter));
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
@@ -198,6 +216,9 @@ std::list<Cours> LesCours::CoursEtu(){
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
 					if (Etudiant == monNom){
+						if (ID != ""){
+							cours.setId(ID);
+						}
 						if (Etudiant != ""){
 							cours.setEtudiant(Etudiant);
 						}
@@ -253,6 +274,10 @@ std::list<Cours> LesCours::CoursEtuDispo()
 					std::string delimiter = ";"; // délimiteur qui permet de split la ligne
 
 					// on récupére le titre PS: attention a l'ordre dans le fichier
+					std::string ID = monTableau.substr(0, monTableau.find(delimiter));
+					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
+
+					// on récupére le titre PS: attention a l'ordre dans le fichier
 					std::string titre = monTableau.substr(0, monTableau.find(delimiter));
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
@@ -265,7 +290,9 @@ std::list<Cours> LesCours::CoursEtuDispo()
 					monTableau.erase(0, monTableau.find(delimiter) + delimiter.length()); //On suprime de la string la partie utiliser pour pouvoir effectuer un nouveau split
 
 					//if (Etudiant == monNom){
-						
+						if (ID != ""){
+							cours.setId(ID);
+						}
 						if (titre != ""){
 							cours.setTitre(titre);
 						}

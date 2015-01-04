@@ -17,7 +17,7 @@ class Cours
 public:
 	Cours();
 //Set
-	void setId(int idparam);
+	void setId(std::string idparam);
 	void setTitre(std::string titreparam);
 	void setEnseignant(std::string Ensparam);
 	void setEtudiant(std::string EtuParam);
@@ -27,7 +27,7 @@ public:
 	void setState(std::string stateparam);
 
 // Get
-	int			GetId();
+	std::string	GetId();
 	std::string GetTitre();
 	std::string GetEnseigant();
 	std::string GetEtudiant();
@@ -37,7 +37,7 @@ public:
 
 private:
 
-	int id;
+	std::string id;
 	std::string titre;
 	std::string enseignant;
 	std::string Etudiant;

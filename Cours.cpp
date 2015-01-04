@@ -5,7 +5,7 @@ using namespace std;
 
 Cours::Cours()
 {
-	id = NULL;
+	id = "";
 	titre = "";
 	Description = "";
 	maxEtu = NULL;
@@ -14,7 +14,7 @@ Cours::Cours()
 }
 
 // méthode qui permette de set les propriéter d'un objet
-void Cours::setId(int idparam){
+void Cours::setId(std::string idparam){
 			id = idparam;
 }
 void Cours::setTitre(std::string titreparam){
@@ -49,7 +49,7 @@ void Cours::setState(std::string stateparam){
 
 
 		// méthode qui permette de Get les propriéter d'un objet
-int Cours::GetId(){
+std::string Cours::GetId(){
 			return id;
 }
 
