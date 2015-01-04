@@ -103,11 +103,13 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(620, 481);
+			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->dataGridView1->Size = System::Drawing::Size(827, 592);
 			this->dataGridView1->TabIndex = 0;
+			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &CoursEtu::dataGridView1_CellMouseClick);
 			// 
 			// IDColum
 			// 
@@ -139,22 +141,22 @@ namespace Projet2 {
 			// 
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(158, 48);
+			this->contextMenuStrip1->Size = System::Drawing::Size(180, 28);
 			// 
 			// ConsulterToolStripMenuItem
 			// 
 			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
-			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(179, 24);
 			this->ConsulterToolStripMenuItem->Text = L"Consulter cours";
 			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &CoursEtu::ConsulterToolStripMenuItem_Click);
 			// 
 			// CoursEtu
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(620, 481);
+			this->ClientSize = System::Drawing::Size(827, 592);
 			this->Controls->Add(this->dataGridView1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"CoursEtu";
 			this->Text = L"CoursEtu";
 			this->Load += gcnew System::EventHandler(this, &CoursEtu::CoursEtu_Load);
@@ -199,6 +201,11 @@ private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, 
 			 ConsulterResourceEtu ^CRE = gcnew ConsulterResourceEtu(ID);
 			 CRE->Show();
 }
+	private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+
+				 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
+				 contextMenuStrip1->Show(dataGridView1, e->Location);
+	}
 };
 
 }
