@@ -47,10 +47,15 @@ namespace Projet2 {
 			}
 		}
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  IDColum;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column4;
+
+
+
+
 	protected:
 
 	private:
@@ -67,6 +72,7 @@ namespace Projet2 {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->IDColum = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -81,16 +87,23 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
-				this->Column1,
-					this->Column2, this->Column3, this->Column4
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->IDColum,
+					this->Column1, this->Column2, this->Column3, this->Column4
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
-			this->dataGridView1->Size = System::Drawing::Size(826, 592);
+			this->dataGridView1->Size = System::Drawing::Size(620, 481);
 			this->dataGridView1->TabIndex = 0;
+			// 
+			// IDColum
+			// 
+			this->IDColum->FillWeight = 50;
+			this->IDColum->HeaderText = L"ID";
+			this->IDColum->Name = L"IDColum";
 			// 
 			// Column1
 			// 
@@ -114,10 +127,11 @@ namespace Projet2 {
 			// 
 			// CoursEtu
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(826, 592);
+			this->ClientSize = System::Drawing::Size(620, 481);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"CoursEtu";
 			this->Text = L"CoursEtu";
 			this->Load += gcnew System::EventHandler(this, &CoursEtu::CoursEtu_Load);
@@ -136,18 +150,20 @@ namespace Projet2 {
 				 {
 					 Cours cours = *lit;
 
+					 std::string ID = cours.GetId();
 					 std::string etudiant = cours.GetEtudiant();
 					 std::string titre = cours.GetTitre();
 					 std::string enseignant = cours.GetEnseigant();
 					 std::string description = cours.GetDesciption();
 
-					 String^ C = gcnew String(etudiant.c_str());
-					 String^ C1 = gcnew String(titre.c_str());
-					 String^ C2 = gcnew String(enseignant.c_str());
-					 String^ C3 = gcnew String(description.c_str());
+					 String^ C = gcnew String(ID.c_str());
+					 String^ C1 = gcnew String(etudiant.c_str());
+					 String^ C2 = gcnew String(titre.c_str());
+					 String^ C3 = gcnew String(enseignant.c_str());
+					 String^ C4 = gcnew String(description.c_str());
 					 
 
-					 dataGridView1->Rows->Add(C, C1, C2, C3);
+					 dataGridView1->Rows->Add(C, C1, C2, C3,C4);
 				 }
 
 	}
