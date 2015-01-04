@@ -1,18 +1,2 @@
-BDD;ens1;Apprend a faire de la base de donnees
-
-bdd;ens;base e donnees
-
-hh;ens;fde
-
-2;ens;2
-
-3;ens;3
-
-patate;test;patate
-
-patate1;ens;patate1
-
-patate2;ens;patate2
-
-ens test;ens;yop patate
+1;id = 1;ens;id = 1
 

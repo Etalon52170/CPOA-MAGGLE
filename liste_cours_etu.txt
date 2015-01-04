@@ -1,4 +1,2 @@
-swag;hh; ens; fde
-swag;BDD; ens1; Apprend a faire de la base de donnees
-swag;2; ens; 2
-test;2; ens; 2
+
+test;1; id = 1; ens;id = 1; 
