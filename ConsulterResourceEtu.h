@@ -1,6 +1,7 @@
 #pragma once
 #include "LesRessources.h"
 #include <list>
+#include "AfficherRessource.h"
 
 namespace Projet2 {
 
@@ -121,13 +122,13 @@ namespace Projet2 {
 			// 
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(182, 48);
+			this->contextMenuStrip1->Size = System::Drawing::Size(171, 48);
 			// 
 			// ConsulterToolStripMenuItem
 			// 
 			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
-			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(181, 22);
-			this->ConsulterToolStripMenuItem->Text = L"Consulter Ressource";
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(170, 22);
+			this->ConsulterToolStripMenuItem->Text = L"afficher Ressource";
 			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterResourceEtu::ConsulterToolStripMenuItem_Click);
 			// 
 			// ConsulterResourceEtu
@@ -170,6 +171,19 @@ namespace Projet2 {
 
 	private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
+				 System::String^ titre = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+				 System::String^ value = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+
+				 msclr::interop::marshal_context context;
+				 std::string Title = context.marshal_as<std::string>(titre);
+				 std::string Valeur = context.marshal_as<std::string>(value);
+
+				 if (Title != "" && Valeur != "")
+				 {
+					 AfficherRessource ^CRE = gcnew  AfficherRessource(Title, Valeur);
+					 CRE->Show();
+				 }
+				 
 	}
 };
 }

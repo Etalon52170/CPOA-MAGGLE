@@ -1,7 +1,8 @@
 #pragma once
 
 #include "LesRessources.h"
-
+#include "AfficherRessource.h"
+#include "AjouterResource.h"
 namespace Projet2 {
 
 	using namespace System;
@@ -24,6 +25,7 @@ namespace Projet2 {
 			//TODO: ajoutez ici le code du constructeur
 			//
 			this->Lressource_Load(ID);
+			this->label1->Text = gcnew String(ID.c_str());
 		}
 
 	protected:
@@ -42,12 +44,17 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  ConsulterToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^  ajouterRessourceToolStripMenuItem;
+	private: System::Windows::Forms::Label^  label1;
+	private: System::ComponentModel::IContainer^  components;
 
 	private:
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -56,11 +63,17 @@ namespace Projet2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->ConsulterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ajouterRessourceToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -107,16 +120,52 @@ namespace Projet2 {
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->ConsulterToolStripMenuItem,
+					this->ajouterRessourceToolStripMenuItem
+			});
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(171, 48);
+			// 
+			// ConsulterToolStripMenuItem
+			// 
+			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(170, 22);
+			this->ConsulterToolStripMenuItem->Text = L"afficher Ressource";
+			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterRessourceEns::ConsulterToolStripMenuItem_Click);
+			// 
+			// ajouterRessourceToolStripMenuItem
+			// 
+			this->ajouterRessourceToolStripMenuItem->Name = L"ajouterRessourceToolStripMenuItem";
+			this->ajouterRessourceToolStripMenuItem->Size = System::Drawing::Size(170, 22);
+			this->ajouterRessourceToolStripMenuItem->Text = L"Ajouter Ressource";
+			this->ajouterRessourceToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterRessourceEns::ajouterRessourceToolStripMenuItem_Click);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(-3, 0);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->TabIndex = 3;
+			this->label1->Text = L"label1";
+			this->label1->Visible = false;
+			// 
 			// ConsulterRessourceEns
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(384, 361);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"ConsulterRessourceEns";
 			this->Text = L"ConsulterRessourceEns";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -145,5 +194,29 @@ namespace Projet2 {
 					 }
 		}
 
-	};
+	private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+				 System::String^ titre = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+				 System::String^ value = dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString();
+
+				 msclr::interop::marshal_context context;
+				 std::string Title = context.marshal_as<std::string>(titre);
+				 std::string Valeur = context.marshal_as<std::string>(value);
+
+				 if (Title != "" && Valeur != "")
+				 {
+					 AfficherRessource ^CRE = gcnew  AfficherRessource(Title, Valeur);
+					 CRE->Show();
+				 }
+	}
+
+	private: System::Void ajouterRessourceToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+				 System::String^ ID = this->label1->Text;
+
+				 msclr::interop::marshal_context context;
+				 std::string id = context.marshal_as<std::string>(ID);
+
+				 AjouterResource ^AR = gcnew AjouterResource(id);
+				 AR->Show();
+	}	
+};
 }
