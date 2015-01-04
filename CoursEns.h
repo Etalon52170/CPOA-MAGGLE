@@ -90,9 +90,9 @@ namespace Projet2 {
 			this->panel1->Controls->Add(this->dataGridView1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Margin = System::Windows::Forms::Padding(2);
+			this->panel1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(316, 312);
+			this->panel1->Size = System::Drawing::Size(421, 384);
 			this->panel1->TabIndex = 0;
 			// 
 			// dataGridView1
@@ -108,14 +108,15 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(316, 312);
+			this->dataGridView1->Size = System::Drawing::Size(421, 384);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &CoursEns::dataGridView1_CellContentClick);
+			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &CoursEns::dataGridView1_CellMouseClick);
 			// 
 			// Column1
 			// 
@@ -136,22 +137,22 @@ namespace Projet2 {
 			// 
 			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(158, 26);
+			this->contextMenuStrip1->Size = System::Drawing::Size(180, 28);
 			// 
 			// ConsulterToolStripMenuItem
 			// 
 			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
-			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(179, 24);
 			this->ConsulterToolStripMenuItem->Text = L"Consulter cours";
 			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &CoursEns::ConsulterToolStripMenuItem_Click);
 			// 
 			// CoursEns
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(316, 312);
+			this->ClientSize = System::Drawing::Size(421, 384);
 			this->Controls->Add(this->panel1);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"CoursEns";
 			this->Text = L"Arche Enseignant";
 			this->Load += gcnew System::EventHandler(this, &CoursEns::CoursEns_Load);
@@ -184,89 +185,7 @@ namespace Projet2 {
 
 					 dataGridView1->Rows->Add(C1, C2, C3);
 				 }
-				/* String^ name;
-				 ifstream fichier1("etu_co.txt");
-				 string montableau1;
-				 if (!fichier1.is_open())
-				 {
-				 }
-				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(fichier1, montableau1))
-					 {
-						 char *str1 = new char[montableau1.length() + 1];
-						 strcpy(str1, montableau1.c_str());
-						 char str2[] = ";";
-						 char * nom;
-						 nom = strtok(str1, str2);
-						  name = gcnew String(nom);
-						  fichier1.close();
-					 }
-				 }
-				 ifstream fichier("liste_cours_ens.txt");
-				 string monTableau;
-				 if (!fichier.is_open())
-				 {
-				 }
-				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(fichier, monTableau))
-					 {
-						 char *str1 = new char[monTableau.length() + 1];
-						 strcpy(str1, monTableau.c_str());
-						 char str2[] = ";";
-						 char * logfile;
-						 char * passfile;
-						 char * desc;
-						 char * n;
-						 n = strtok(str1, str2);
-						 logfile = strtok(NULL, str2);
-						 passfile = strtok(NULL, str2);
-						 desc = strtok(NULL, str2);
-						 String^ cc = gcnew String(n);
-						 String^ c = gcnew String(logfile);
-						 String^ c2 = gcnew String(passfile);
-						 String^ c3 = gcnew String(desc);
-						 MessageBox::Show(cc);
-						 
-						 if (cc == name){
-							 ///MessageBox::Show(cc + " " + name);
-							 if (c != nullptr){
-								 ///if (i == 2){
-								 ///tab[i - 1] = c;
-								 ///}
-								 ///else{
-								 tab[i] = c;
-								 ///}
-							 }
-							 if (c2 != nullptr){
-
-
-								 tab[i + 1] = c2;
-
-
-							 }
-							 if (c3 != nullptr){
-								 tab[i + 2] = c3;
-							 }
-						 }
-						 i = i + 4;
-					 }
-					 
-					 for (int j = 0; j < 99; j = j + 4){
-						 if (tab[j] != nullptr && tab[j + 1] != nullptr){
-							 
-								 dataGridView1->Rows->Add(tab[j], tab[j + 1], tab[j + 2]);
-							 
-						 }
-						 
-					 }
-					 fichier.close();
-				 }*/
+				
 	}
 private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
@@ -277,5 +196,10 @@ private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, 
 			 CRE->Show();
 }
 
+private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
+			 contextMenuStrip1->Show(dataGridView1, e->Location);
+
+}
 };
 }
