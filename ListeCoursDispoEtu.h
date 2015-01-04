@@ -56,6 +56,7 @@ namespace Projet2 {
 
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  sinscrireToolStripMenuItem;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  IDColum;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  CoursColum;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Enseignant;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
@@ -81,6 +82,7 @@ namespace Projet2 {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->IDColum = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->CoursColum = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Enseignant = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -107,7 +109,8 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->IDColum,
 				this->CoursColum,
 					this->Enseignant, this->Column1
 			});
@@ -123,6 +126,12 @@ namespace Projet2 {
 			this->dataGridView1->TabIndex = 1;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ListeCoursDispoEtu::dataGridView1_CellContentClick);
 			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &ListeCoursDispoEtu::dataGridView1_CellMouseClick);
+			// 
+			// ID
+			// 
+			this->IDColum->HeaderText = L"ID";
+			this->IDColum->Name = L"ID";
+			this->IDColum->ReadOnly = true;
 			// 
 			// Cours
 			// 
@@ -153,6 +162,7 @@ namespace Projet2 {
 			this->sinscrireToolStripMenuItem->Name = L"sinscrireToolStripMenuItem";
 			this->sinscrireToolStripMenuItem->Size = System::Drawing::Size(120, 22);
 			this->sinscrireToolStripMenuItem->Text = L"s\'inscrire";
+			this->sinscrireToolStripMenuItem->Click += gcnew System::EventHandler(this, &ListeCoursDispoEtu::sinscrireToolStripMenuItem_Click_1);
 			// 
 			// ListeCoursDispoEtu
 			// 
@@ -189,15 +199,18 @@ namespace Projet2 {
 				 {
 					 Cours cours = *lit;
 
+					 std::string ID = cours.GetId();
 					 std::string titre = cours.GetTitre();
-					 std::string statue = cours.GetState();
+					 std::string Enseignant = cours.GetEnseigant();
 					 std::string description = cours.GetDesciption();
 
+					 String^ C = gcnew String(ID.c_str());
 					 String^ C1 = gcnew String(titre.c_str());
-					 String^ C2 = gcnew String(description.c_str());
-					 String^ C3 = gcnew String(statue.c_str());
+					 String^ C2 = gcnew String(Enseignant.c_str());
+					 String^ C3 = gcnew String(description.c_str());
+					 
 
-					 dataGridView1->Rows->Add(C1, C2, C3);
+					 dataGridView1->Rows->Add(C, C1, C2, C3);
 				 }
 				 /*
 				 ifstream fichier("liste_cours.txt");
@@ -265,32 +278,22 @@ namespace Projet2 {
 				 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
 				 contextMenuStrip1->Show(dataGridView1, e->Location);
 	}
-	private: System::Void sinscrireToolStripMenuItem_Click_1(System::Object^  sender, System::EventArgs^  e) {
-				 ifstream fichier("etu_co.txt");
-				 String^ c;
-				 string tabl;
-				 if (!fichier.is_open())
+	private: System::Void sinscrireToolStripMenuItem_Click_1 (System::Object^  sender, System::EventArgs^  e) {
+
+				 std::ifstream fichier1("etu_co.txt");
+				 std::string monNom;
+
+				 if (fichier1.is_open())
 				 {
-				 }
-				 else{
-					 array<String^>^ tab = gcnew array<String^>(100);
-					 bool res = false;
-					 int i = 0;
-					 while (getline(fichier, tabl))
-					 {
-						 char *str1 = new char[tabl.length() + 1];
-						 strcpy(str1, tabl.c_str());
-						 char str2[] = ";";
-						 char * nometu;
-						 nometu = strtok(str1, str2);
-						 c = gcnew String(nometu);
-						 fichier.close();
-					 }
+					 getline(fichier1, monNom);
+					 fichier1.close();
 				 }
 
+				 String^ c = gcnew String(monNom.c_str());
 				 String^ file = "liste_cours_etu.txt";
+
 				 StreamWriter^ swr = gcnew StreamWriter(file, true);
-				 swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString());
+				 swr->WriteLine(c + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + "; ");
 				 swr->Close();
 	}
  };

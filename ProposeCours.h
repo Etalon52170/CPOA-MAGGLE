@@ -168,7 +168,29 @@ namespace Projet2 {
 	}
 
 	public: void Propose(void){
-				String^ c;
+
+				//récupération Ens Co
+				std::ifstream fichier0("etu_co.txt");
+				std::string monNom;
+				if (fichier0.is_open())
+				{
+					getline(fichier0, monNom);
+					fichier0.close();
+				}
+
+				//Récupération Last ID générer
+				std::ifstream fichier1("LastInsertID.txt");
+				std::string monId;
+				if (fichier1.is_open())
+				{
+					getline(fichier1, monId);
+					fichier1.close();
+				}
+
+				int IDNum = atoi(monId.c_str());
+				IDNum ++;
+
+				/*String^ c;
 				ifstream fichier1("etu_co.txt");
 				string monTableau;
 				if (!fichier1.is_open())
@@ -188,18 +210,27 @@ namespace Projet2 {
 						c = gcnew String(ensco);
 						fichier1.close();
 					}
-				}
+				}*/
+				String^ C = gcnew String(monNom.c_str());
+
+				string ID = std::to_string(IDNum);
+				String^ ID2 = gcnew String(ID.c_str());
+				string ID3 = netStr2CppStr(ID2);
+
 				if (textBox1->Text != nullptr && textBox1->Text != nullptr){
 					std::ofstream fichier("Cours_en_attente.txt", std::ios_base::app);
 					if (fichier){
 						String^ nom = textBox1->Text + ";";
 						String^ description = textBox2->Text;
 						if (nom != nullptr && description != nullptr){
-
-
+							
+							
 							string name = netStr2CppStr(nom);
-							string ensconnecte = netStr2CppStr(c);
+
+							string ensconnecte = netStr2CppStr(C);
+
 							string desc = netStr2CppStr(description);
+							fichier << ID3 + ";";
 							fichier << name;
 							fichier << ensconnecte + ";";
 							fichier << desc + "\n";
@@ -218,8 +249,9 @@ namespace Projet2 {
 
 
 							string name = netStr2CppStr(nomm);
-							string ensconnecte = netStr2CppStr(c);
+							string ensconnecte = netStr2CppStr(C);
 							string desc = netStr2CppStr(description);
+							fichier2 << ID3 + ";";
 							fichier2 << ensconnecte + ";";
 							fichier2 << name + ";";
 							fichier2 << desc + "; en attente \n";
@@ -231,7 +263,15 @@ namespace Projet2 {
 
 					}
 				}
+				//Modification de l'id inseré
+				std::ofstream fichier("LastInsertID.txt", std::ios_base::app);
+				if (fichier){
+					FILE *f = fopen("LastInsertID.txt", "w");
 
+					remove("azertyuiopqsdfghjklmwxcvbn0123456789");
+					fichier << monId;
+					fclose(f);
+				}
 
 
 	}
