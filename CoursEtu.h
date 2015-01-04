@@ -8,7 +8,9 @@
 #include <string>
 #include <sstream>
 #include "LesCours.h"
+#include "ConsulterResourceEtu.h"
 
+#include <msclr\marshal_cppstd.h>
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
@@ -46,6 +48,7 @@ namespace Projet2 {
 				delete components;
 			}
 		}
+
 	private: System::Windows::Forms::DataGridView^  dataGridView1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  IDColum;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
@@ -165,8 +168,17 @@ namespace Projet2 {
 
 					 dataGridView1->Rows->Add(C, C1, C2, C3,C4);
 				 }
-
 	}
+
+			 private: System::Void accepterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+						  System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+
+						  msclr::interop::marshal_context context;
+						  std::string ID = context.marshal_as<std::string>(managedString);
+						  ConsulterResourceEtu ^CRE = gcnew ConsulterResourceEtu(ID);
+						  CRE->Show();
+			 }
 };
 
 }

@@ -81,6 +81,10 @@
   <ItemGroup>
     <ClCompile Include="acceuilAdmin.cpp" />
     <ClCompile Include="admin.cpp" />
+    <ClCompile Include="AfficherRessource.cpp" />
+    <ClCompile Include="AjouterResource.cpp" />
+    <ClCompile Include="ConsulterResourceEtu.cpp" />
+    <ClCompile Include="ConsulterRessourceEns.cpp" />
     <ClCompile Include="Cours.cpp" />
     <ClCompile Include="CoursEns.cpp" />
     <ClCompile Include="CoursEtu.cpp" />
@@ -102,6 +106,18 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="admin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AfficherRessource.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AjouterResource.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsulterResourceEtu.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ConsulterRessourceEns.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Cours.h" />
@@ -140,6 +156,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="admin.resx">
       <DependentUpon>admin.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AfficherRessource.resx">
+      <DependentUpon>AfficherRessource.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AjouterResource.resx">
+      <DependentUpon>AjouterResource.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsulterResourceEtu.resx">
+      <DependentUpon>ConsulterResourceEtu.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsulterRessourceEns.resx">
+      <DependentUpon>ConsulterRessourceEns.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoursEns.resx">
       <DependentUpon>CoursEns.h</DependentUpon>

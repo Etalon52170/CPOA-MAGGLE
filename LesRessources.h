@@ -14,6 +14,6 @@ ref class LesRessources
 {
 public:
 	LesRessources();
-	static std::list<Ressources> findByCours(int idCours);
+	static std::list<Ressources> findByCours(std::string idCours);
 };
 

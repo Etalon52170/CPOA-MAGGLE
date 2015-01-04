@@ -66,6 +66,18 @@
     <ClCompile Include="Ressources.cpp">
       <Filter>Fichiers d%27en-tête\class</Filter>
     </ClCompile>
+    <ClCompile Include="ConsulterResourceEtu.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsulterRessourceEns.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="AjouterResource.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
+    <ClCompile Include="AfficherRessource.cpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\..\Downloads\ressource.h">
@@ -116,6 +128,18 @@
     <ClInclude Include="ListeCoursDispoEtu.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="ConsulterResourceEtu.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsulterRessourceEns.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="AjouterResource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="AfficherRessource.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="admin.resx">
@@ -150,6 +174,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListeCoursDispoEtu.resx">
       <Filter>Fichiers d%27en-tête</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsulterResourceEtu.resx">
+      <Filter>Fichiers de ressources</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConsulterRessourceEns.resx">
+      <Filter>Fichiers de ressources</Filter>
     </EmbeddedResource>
   </ItemGroup>
 </Project>
