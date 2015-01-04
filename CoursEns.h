@@ -7,7 +7,8 @@
 #include <string>
 #include <sstream>
 
-
+#include "ConsulterRessourceEns.h"
+#include <msclr\marshal_cppstd.h>
 #include <atlstr.h>
 #define _CRT_SECURE_NO_WARNINGS
 namespace Projet2 {
@@ -53,12 +54,16 @@ namespace Projet2 {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
+	private: System::Windows::Forms::ToolStripMenuItem^  ConsulterToolStripMenuItem;
+
+	private: System::ComponentModel::IContainer^  components;
 
 	private:
 		/// <summary>
 		/// Variable nécessaire au concepteur.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -67,13 +72,17 @@ namespace Projet2 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->ConsulterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			this->contextMenuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// panel1
@@ -81,8 +90,9 @@ namespace Projet2 {
 			this->panel1->Controls->Add(this->dataGridView1);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->panel1->Location = System::Drawing::Point(0, 0);
+			this->panel1->Margin = System::Windows::Forms::Padding(2);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(422, 384);
+			this->panel1->Size = System::Drawing::Size(316, 312);
 			this->panel1->TabIndex = 0;
 			// 
 			// dataGridView1
@@ -98,11 +108,12 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(422, 384);
+			this->dataGridView1->Size = System::Drawing::Size(316, 312);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &CoursEns::dataGridView1_CellContentClick);
 			// 
@@ -121,17 +132,32 @@ namespace Projet2 {
 			this->Column3->HeaderText = L"Etat";
 			this->Column3->Name = L"Column3";
 			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->ConsulterToolStripMenuItem });
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(158, 26);
+			// 
+			// ConsulterToolStripMenuItem
+			// 
+			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(157, 22);
+			this->ConsulterToolStripMenuItem->Text = L"Consulter cours";
+			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &CoursEns::ConsulterToolStripMenuItem_Click);
+			// 
 			// CoursEns
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(422, 384);
+			this->ClientSize = System::Drawing::Size(316, 312);
 			this->Controls->Add(this->panel1);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"CoursEns";
 			this->Text = L"Arche Enseignant";
 			this->Load += gcnew System::EventHandler(this, &CoursEns::CoursEns_Load);
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			this->contextMenuStrip1->ResumeLayout(false);
 			this->ResumeLayout(false);
 
 		}
@@ -242,5 +268,14 @@ namespace Projet2 {
 					 fichier.close();
 				 }*/
 	}
+private: System::Void ConsulterToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 System::String^ managedString = dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString();
+
+			 msclr::interop::marshal_context context;
+			 std::string ID = context.marshal_as<std::string>(managedString);
+			 ConsulterRessourceEns ^CRE = gcnew  ConsulterRessourceEns(ID);
+			 CRE->Show();
+}
+
 };
 }
