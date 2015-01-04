@@ -54,9 +54,13 @@ namespace Projet2 {
 	private: System::Windows::Forms::ContextMenuStrip^  contextMenuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^  accepterToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^  refuserToolStripMenuItem;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column0;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column2;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^  Column3;
+
+
+
 
 
 
@@ -83,6 +87,7 @@ namespace Projet2 {
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->accepterToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->refuserToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->Column0 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -98,18 +103,19 @@ namespace Projet2 {
 			this->dataGridView1->AllowUserToResizeRows = false;
 			this->dataGridView1->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
-				this->Column1,
-					this->Column2, this->Column3
+			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Column0,
+					this->Column1, this->Column2, this->Column3
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(438, 375);
+			this->dataGridView1->Size = System::Drawing::Size(457, 305);
 			this->dataGridView1->TabIndex = 0;
 			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &admin::dataGridView1_CellContentClick);
 			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &admin::dataGridView1_CellMouseClick);
@@ -121,46 +127,57 @@ namespace Projet2 {
 					this->refuserToolStripMenuItem
 			});
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(138, 52);
+			this->contextMenuStrip1->Size = System::Drawing::Size(122, 48);
 			// 
 			// accepterToolStripMenuItem
 			// 
 			this->accepterToolStripMenuItem->Name = L"accepterToolStripMenuItem";
-			this->accepterToolStripMenuItem->Size = System::Drawing::Size(137, 24);
+			this->accepterToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->accepterToolStripMenuItem->Text = L"Accepter";
 			this->accepterToolStripMenuItem->Click += gcnew System::EventHandler(this, &admin::accepterToolStripMenuItem_Click);
 			// 
 			// refuserToolStripMenuItem
 			// 
 			this->refuserToolStripMenuItem->Name = L"refuserToolStripMenuItem";
-			this->refuserToolStripMenuItem->Size = System::Drawing::Size(137, 24);
+			this->refuserToolStripMenuItem->Size = System::Drawing::Size(121, 22);
 			this->refuserToolStripMenuItem->Text = L"Refuser";
 			this->refuserToolStripMenuItem->Click += gcnew System::EventHandler(this, &admin::refuserToolStripMenuItem_Click);
 			// 
+			// Column0
+			// 
+			this->Column0->FillWeight = 50;
+			this->Column0->HeaderText = L"ID";
+			this->Column0->Name = L"Column0";
+			this->Column0->ReadOnly = true;
+			// 
 			// Column1
 			// 
+			this->Column1->FillWeight = 99.49239F;
 			this->Column1->HeaderText = L"Cours en attente";
 			this->Column1->Name = L"Column1";
 			this->Column1->ReadOnly = true;
 			// 
 			// Column2
 			// 
+			this->Column2->FillWeight = 99.49239F;
 			this->Column2->HeaderText = L"Enseignant responsable";
 			this->Column2->Name = L"Column2";
 			this->Column2->ReadOnly = true;
 			// 
 			// Column3
 			// 
+			this->Column3->FillWeight = 99.49239F;
 			this->Column3->HeaderText = L"Description";
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
 			// 
 			// admin
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(438, 375);
+			this->ClientSize = System::Drawing::Size(457, 305);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"admin";
 			this->Text = L"ARCHE admin";
 			this->Load += gcnew System::EventHandler(this, &admin::admin_Load);
@@ -184,15 +201,17 @@ namespace Projet2 {
 				 {
 					 Cours cours = *lit;
 
+					 std::string ID = cours.GetId();
 					 std::string titre = cours.GetTitre();
 					 std::string enseignant = cours.GetEnseigant();
 					 std::string description = cours.GetDesciption();
 
+					 String^ C = gcnew String(ID.c_str());
 					 String^ C1 = gcnew String(titre.c_str());
 					 String^ C2 = gcnew String(enseignant.c_str());
 					 String^ C3 = gcnew String(description.c_str());
 
-					 dataGridView1->Rows->Add(C1, C2, C3);
+					 dataGridView1->Rows->Add(C, C1, C2, C3);
 				 }
 	}
 	private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
@@ -205,13 +224,13 @@ namespace Projet2 {
 
 				 String^ file = "liste_cours_ens.txt";
 				 StreamWriter^ swr = gcnew StreamWriter(file, true);
-				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";accepte " + "\n");
+				 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";accepte " + "\n");
 				 swr->Close();
 				 String^ fileName = "liste_cours.txt";
 
 
 				 StreamWriter^ sw = gcnew StreamWriter(fileName, true);
-				 sw->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "\n");
+				 sw->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + "\n");
 				 sw->Close();
 
 				 int index = dataGridView1->SelectedCells[0]->RowIndex;
@@ -222,7 +241,7 @@ namespace Projet2 {
 				 StreamWriter^ s = gcnew StreamWriter(f);
 				 for (int i = 0; i < dataGridView1->Rows->Count; i++)
 				 {
-					 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+					 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + "\n");
 
 				 }
 				 s->Close();
@@ -233,7 +252,7 @@ namespace Projet2 {
 private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 			 String^ file = "liste_cours_ens.txt";
 			 StreamWriter^ swr = gcnew StreamWriter(file, true);
-			 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + ";refuse " + "\n");
+			 swr->WriteLine(dataGridView1->SelectedRows[0]->Cells[0]->Value->ToString() + ";" + dataGridView1->SelectedRows[0]->Cells[2]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[1]->Value->ToString() + "; " + dataGridView1->SelectedRows[0]->Cells[3]->Value->ToString() + ";refuse " + "\n");
 			 swr->Close();
 
 			 int index = dataGridView1->SelectedCells[0]->RowIndex;
@@ -244,7 +263,7 @@ private: System::Void refuserToolStripMenuItem_Click(System::Object^  sender, Sy
 			 StreamWriter^ s = gcnew StreamWriter(f);
 			 for (int i = 0; i < dataGridView1->Rows->Count; i++)
 			 {
-				 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + "\n");
+				 s->WriteLine(dataGridView1->Rows[i]->Cells[0]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[1]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[2]->Value->ToString() + ";" + dataGridView1->Rows[i]->Cells[3]->Value->ToString() + "\n");
 
 			 }
 
