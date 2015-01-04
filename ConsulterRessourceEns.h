@@ -91,14 +91,15 @@ namespace Projet2 {
 			});
 			this->dataGridView1->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->dataGridView1->Location = System::Drawing::Point(0, 0);
-			this->dataGridView1->Margin = System::Windows::Forms::Padding(2);
+			this->dataGridView1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView1->MultiSelect = false;
 			this->dataGridView1->Name = L"dataGridView1";
 			this->dataGridView1->ReadOnly = true;
 			this->dataGridView1->RowTemplate->Height = 24;
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dataGridView1->Size = System::Drawing::Size(384, 361);
+			this->dataGridView1->Size = System::Drawing::Size(512, 444);
 			this->dataGridView1->TabIndex = 2;
+			this->dataGridView1->CellMouseClick += gcnew System::Windows::Forms::DataGridViewCellMouseEventHandler(this, &ConsulterRessourceEns::dataGridView1_CellMouseClick);
 			// 
 			// Column1
 			// 
@@ -128,39 +129,41 @@ namespace Projet2 {
 					this->ajouterRessourceToolStripMenuItem
 			});
 			this->contextMenuStrip1->Name = L"contextMenuStrip1";
-			this->contextMenuStrip1->Size = System::Drawing::Size(171, 48);
+			this->contextMenuStrip1->Size = System::Drawing::Size(199, 52);
 			// 
 			// ConsulterToolStripMenuItem
 			// 
 			this->ConsulterToolStripMenuItem->Name = L"ConsulterToolStripMenuItem";
-			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(170, 22);
+			this->ConsulterToolStripMenuItem->Size = System::Drawing::Size(198, 24);
 			this->ConsulterToolStripMenuItem->Text = L"afficher Ressource";
 			this->ConsulterToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterRessourceEns::ConsulterToolStripMenuItem_Click);
 			// 
 			// ajouterRessourceToolStripMenuItem
 			// 
 			this->ajouterRessourceToolStripMenuItem->Name = L"ajouterRessourceToolStripMenuItem";
-			this->ajouterRessourceToolStripMenuItem->Size = System::Drawing::Size(170, 22);
+			this->ajouterRessourceToolStripMenuItem->Size = System::Drawing::Size(198, 24);
 			this->ajouterRessourceToolStripMenuItem->Text = L"Ajouter Ressource";
 			this->ajouterRessourceToolStripMenuItem->Click += gcnew System::EventHandler(this, &ConsulterRessourceEns::ajouterRessourceToolStripMenuItem_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(-3, 0);
+			this->label1->Location = System::Drawing::Point(-4, 0);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(35, 13);
+			this->label1->Size = System::Drawing::Size(46, 17);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"label1";
 			this->label1->Visible = false;
 			// 
 			// ConsulterRessourceEns
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(384, 361);
+			this->ClientSize = System::Drawing::Size(512, 444);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->dataGridView1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ConsulterRessourceEns";
 			this->Text = L"ConsulterRessourceEns";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -219,5 +222,10 @@ namespace Projet2 {
 				 AjouterResource ^AR = gcnew AjouterResource(id);
 				 AR->Show();
 	}	
+private: System::Void dataGridView1_CellMouseClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellMouseEventArgs^  e) {
+			 contextMenuStrip1->Tag = dataGridView1->HitTest(e->X, e->Y);
+			 contextMenuStrip1->Show(dataGridView1, e->Location);
+
+}
 };
 }
