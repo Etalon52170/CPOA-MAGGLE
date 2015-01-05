@@ -1,2 +1,8 @@
 
 
+1;ens;patate;patate;en attente
+1;ens; patate;patate;accepte
+
+2;ens;bdd;base de données;en attente
+2;ens; bdd;base de donnÃ©es;accepte
+

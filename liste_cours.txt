@@ -1,2 +1,6 @@
 
 
+1;patate;ens;patate
+
+2;bdd;ens;base de données
+
