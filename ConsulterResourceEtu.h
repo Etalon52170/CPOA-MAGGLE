@@ -21,7 +21,7 @@ namespace Projet2 {
 		ConsulterResourceEtu(std::string ID)
 		{
 			InitializeComponent();
-			this->Lressource_Load(" "+ID);
+			this->Lressource_Load(ID);
 			//
 			//TODO: ajoutez ici le code du constructeur
 			//

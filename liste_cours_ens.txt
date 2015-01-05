@@ -13,3 +13,6 @@
 5;ens;5;5;en attente
 5;ens; 5;5;accepte
 
+6;ens;test 6 ;pdtr;en attente
+6;ens; test 6 ;pdtr;accepte
+
